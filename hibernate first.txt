@@ -1,0 +1,111 @@
+All class and files should be in src-->com.dsrc
+customer.java(POJO)
+*******************
+package com.dsrc;
+
+public class Customer {
+ private int custId;
+ private String custName;
+ private String city;
+ 
+ Customer(int custId,String custName,String city)
+ {
+	 this.custId=custId;
+	 this.custName=custName;
+	 this.city=city;
+ }
+public int getCustId() {
+	return custId;
+}
+public void setCustId(int custId) {
+	this.custId = custId;
+}
+public String getCustName() {
+	return custName;
+}
+public void setCustName(String custName) {
+	this.custName = custName;
+}
+public String getCity() {
+	return city;
+}
+public void setCity(String city) {
+	this.city = city;
+}
+}
+customer.hbm.xml
+********************
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name = "com.dsrc.Customer" table = "Customer">
+     
+      
+      <id name = "custId" type = "int" column = "custid">
+         <generator class="assigned"/>
+      </id>
+      
+     
+      <property name = "custName" column = "custname" type = "string"/>
+      <property name = "city" column = "city" type = "string"/>
+      
+   </class>
+</hibernate-mapping>
+hibernate.cfg.xml
+******************
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+
+<session-factory>
+
+<property name="hibernate.dialect"> org.hibernate.dialect.MySQLDialect </property>
+
+<property name="hibernate.connection.driver_class"> com.mysql.jdbc.Driver </property>
+
+<!-- Assume test is the database name -->
+
+
+<property name="hibernate.connection.url"> jdbc:mysql://localhost:3306/HIBER </property>
+
+<property name="hibernate.connection.username"> root </property>
+
+<property name="hibernate.connection.password"> dsrc </property>
+
+<!-- List of XML mapping files -->
+
+
+<mapping resource="Customer.hbm.xml"/>
+
+</session-factory>
+
+</hibernate-configuration>
+MainClass.java
+**************
+package com.dsrc;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class MainClass 
+{
+public static void main(String[] args) 
+{
+	SessionFactory sx=new Configuration().configure().buildSessionFactory();
+	Session s=sx.openSession();
+	Customer c=new Customer(101,"abi","chennai");
+	
+	Transaction tx=s.beginTransaction();
+	s.save(c);
+	tx.commit();
+	System.out.println("Data Saved..");
+}
+}

@@ -1,0 +1,172 @@
+reverse the string
+char[]ch=s.toCharArray();
+		for(int i=0;i<ch.length;i++)
+		{
+			int k=i;
+			while(i<ch.length && ch[i]!=' ')
+			i++;
+			
+			char tem=ch[k];
+			ch[k]=ch[i-1];
+			ch[i-1]=tem;
+		}
+return new String(ch);
+******************
+char start=s.charAt(0);
+		char end=s.charAt(s.length()-1);
+		String beginReplace=s.replace(start, end);
+		String endReplace=beginReplace.replace(end,start);
+return (s);
+***************************************************************************
+
+public class Composition {
+private int day;
+private int month;
+private int year;
+
+public Composition()
+{
+	day=5;
+	month=12;
+	year=1998;
+}
+public String format()
+{
+	return (day+"/"+month+"/"+year);
+}
+}
+class Employee
+{
+	private int id;
+	private String name;
+	private int hireDate;
+	Employee()
+	{
+		id=101;
+		name="jack";
+		hireDate=9;
+	}
+	public String display()
+	{
+}
+}	
+*************************
+CREATING OWN EXCEPTION
+
+class InvalidInputException extends Exception
+{
+	public InvalidInputException(String msg)
+	{
+		super(msg);
+	}
+}
+
+class VerifyInput
+{
+	void VerifyInput(String ip1,String ip2) throws InvalidInputException
+	{
+		if(ip1.equals(ip2))
+			System.out.println("Input equal");
+		else
+			throw new  InvalidInputException("Invalid input");
+			System.out.println("Input verified");
+	}
+}
+public class Input 
+{
+	public static void main(String[] args) {
+		VerifyInput v=new VerifyInput();
+		try
+		{
+			v.VerifyInput("law", "lawliet");
+		}
+		catch( InvalidInputException e)
+		{
+			System.out.println(e.getMessage());
+		}
+	}
+}
+*************************************************************************************
+FILES I/O
+System.out.println("Enter Source :" );
+		Scanner sc=new Scanner(System.in);
+		String source=sc.nextLine();
+		System.out.println("Enter Destination :" );
+		String dest=sc.nextLine();
+		try 
+		{
+			FileInputStream fin = new FileInputStream(source);
+			FileOutputStream fst=new FileOutputStream(dest);
+			int ch;
+			while((ch=fin.read())!=-1)
+			{
+
+				fst.write(ch);		
+		} 
+			System.out.println("File copied...");
+		}
+		
+			catch (FileNotFoundException e)
+			{
+			e.printStackTrace();
+			}
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
+*******************************************************************
+REMOVE DUPLICATE CHARACTERS AND RETURN STRING ,ARRANGED IN ASC ORDER
+char []chars=text.toCharArray();
+	Set<Character> c=new TreeSet<Character>();
+	
+	for(Character x: chars)
+	{
+		c.add(x);
+	}
+	StringBuilder sb=new StringBuilder();
+	for(Character i:c)
+	{
+		sb.append(i);
+	}
+	return  sb.toString();	
+*********************************************************************
+//String namesList="Jack-10,Mack-20,Sack-40";
+PRINT THE NAMES ALONE IN LIST
+List<String> getNames(String vals)
+		 {
+			 StringTokenizer st=new StringTokenizer(vals,",");
+			 List <String> l=new ArrayList<String>();
+			 while(st.hasMoreTokens())
+			 {
+				 
+				 String s[]=st.nextToken().split("-");
+				l.add(s[0]);
+			 }
+			 return l;
+*******************************************************************************
+//Map<String,Integer> students=new HashMap<String,Integer>();
+		students.put("Arul", 81);
+		students.put("Arun", 34);
+		students.put("Atul", 91);
+		students.put("Amul", 54);//
+
+List<String> ls=new ArrayList<String>();
+		Set<String> key=input.keySet();
+		
+		for(String x:key)
+		{
+			
+			if(input.get(x)>70)
+				{ls.add(x);}
+		}
+		return ls;
+**************************************************************
+	MULTIPLICATION TABLE IN HTML(SERVLET)
+	PrintWriter out=response.getWriter();
+		String no=request.getParameter("num");
+		out.println("<html><body><table border=1 width=30%>");
+		int res=Integer.parseInt(no);
+		for(int i=1;i<=12;i++)
+		{
+			out.println("<tr><td>"+res+"</td><td>*</td><td>"+i+"</td><td>=</td><td>"+res*i+"</td></tr>");
+		}	

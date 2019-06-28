@@ -1,0 +1,256 @@
+1.
+.TS
+****
+import { Component} from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.styl']
+})
+export class AppComponent {
+public result:any;
+donor(value)
+{
+  if(value.match('O-'))
+  {
+    this.result="universal blood group"
+  }
+  else if(value.match('O+'))
+  {
+    this.result="O+ , A+, B+, AB+"
+  }
+  else if(value.match('A+'))
+  {
+    this.result="A+, AB+"
+  }
+ if(value.match('A-'))
+  {
+    this.result="A+, A-, AB+, AB-"
+  }
+  else if(value.match('B+'))
+  {
+    this.result="B+, AB+"
+  }
+  else if(value.match('B-'))
+  {
+    this.result="B+, B-, AB+, AB-"
+  }
+ if(value.match('AB+'))
+  {
+    this.result="AB+ "
+  }
+ if(value.match('AB-'))
+  {
+    this.result="AB+, AB-"
+  }
+  else
+  {
+    this.result="Enter a valid blood group"
+  }
+}
+}
+.HTML
+********
+<div style="text-align:center">
+   <h1> find your blood donors </h1>
+  <input id="textbox" #textbox type="text" >
+  <button id="button" (click)="donor(textbox.value)">Find</button> 
+  <div id="result">
+    {{result}}
+  </div>
+ </div>
+__________________________________________________________________________________________________________________________
+2.
+APP.COMPONENT.TS
+*********************
+export class AppComponent {
+public title='Welcome to Employee Details';
+}
+APP.COMPONENT.HTML
+**********************
+<div style="text-align:center">
+   <h1>{{title}}</h1>
+   <a [routerLink]="['\register']">Get</a>
+ </div>
+ <div class="outer-outlet">
+   <router-outlet></router-outlet>
+ </div>
+REGISTER.COMPONENT.HTML
+*****************************
+<div style="text-align:left"> 
+    <table>
+      <tr><td></td><td><b>Add Employee</b></td></tr>
+      <tr>
+        <td>FirstName :</td><td><input id="textbox1" #textbox1 type="text"></td>
+      </tr>
+      <tr>
+        <td>Phone No :</td><td><input id="textbox2" #textbox2 type="text"></td>
+      </tr>
+      <tr>
+        <td>Email :</td><td><input id="textbox3" #textbox3 type="email"></td>
+      </tr>
+    </table> 
+       <td><button  id="button" (click)="msg(textbox1.value,textbox2.value,textbox3.value)">Submit</button></td>
+     </div>
+REGISTER.COMPONENT.TS
+****************************
+msg(v1,v2,v3)
+{
+  if(v1.length!=0 && v2.length!=0 && v3.length!=0)
+  {
+    alert("Employee Added Successfully")
+  }
+}
+APP.ROUTING.MODULES.TS
+*************************
+{path :'\register',component :RegisterComponent}
+__________________________________________________________________________________________________________________________
+3.APP.TS
+***********
+public title='Welcome to Employee Details';
+APP.HTML
+**********
+<div style="text-align:center">
+   <h1>{{title}}</h1>
+   <a [routerLink]="['\register']">Get</a>
+ </div>
+ <div class="outer-outlet">
+   <router-outlet></router-outlet>
+ </div>
+REGISTER.TS
+*************
+export class RegisterComponent {
+public res;
+constructor(private router:Router){}
+
+msg(v1,v2,v3)
+{
+  if(v1.length!=0 && v2.length!=0 && v3.length!=0)
+  {
+    this.res=true;
+    alert("Employee Added Successfully")
+  }
+}
+}
+REGISTER.HTML
+****************
+<div style="text-align:left"> 
+    <table>
+      <tr><td></td><td><b>Add Employee</b></td></tr>
+      <tr>
+        <td>FirstName :</td><td><input id="textbox1" #textbox1 type="text"></td>
+      </tr>
+      <tr>
+        <td>Phone No :</td><td><input id="textbox2" #textbox2 type="text"></td>
+      </tr>
+      <tr>
+        <td>Email :</td><td><input id="textbox3" #textbox3 type="email"></td>
+      </tr>
+    </table> 
+       <td><button  id="button" (click)="msg(textbox1.value,textbox2.value,textbox3.value)">Submit</button></td>
+     </div>
+
+     <div *ngIf="res==true" style="text-align:left" >
+       <table  width=500><thead><th>#</th><th>FirstName</th><th>phoneNo</th><th>Email</th></thead>
+        <tbody>
+          <tr><td>0</td><td>{{textbox1.value}}</td><td>{{textbox2.value}}</td><td>{{textbox3.value}}</td></tr>
+        </tbody>
+         
+       </table>
+     </div>
+
+______________________________________________________________________________________________________________
+4. 
+SAME AS QUE3
+REGISTER.TS
+***************
+<div style="text-align:left"> 
+    <table>
+      <tr><td><b>Add Employee</b></td></tr>
+      <tr>
+        <td>FirstName :</td><td><input id="textbox1" #textbox1 type="text"></td>
+      </tr>
+      <tr>
+        <td>Phone No :</td><td><input id="textbox2" #textbox2 type="text"></td>
+      </tr>
+      <tr>
+        <td>Email :</td><td><input id="textbox3" #textbox3 type="email"></td>
+      </tr>
+    </table> 
+       <td><button  id="button" (click)="msg(textbox1.value,textbox2.value,textbox3.value)">Submit</button></td>
+     </div>
+
+     <div *ngIf="res==true" style="text-align:left" >
+       <table  width=500><thead><th>FirstName</th><th>phoneNo</th><th>Email</th></thead>
+        <tbody>
+          <tr *ngIf="del==false"><td>{{textbox1.value}}</td><td>{{textbox2.value}}</td><td>{{textbox3.value}}</td><td><button id="button1" (click)=erase(textbox1.value,textbox2.value,textbox3.value) style="background-color:red">Delete</button></td></tr>
+        </tbody>
+         
+       </table>
+     </div>
+REGISTER.HTML
+***************
+erase(val1,val2,val3)
+{
+ this.del=true;
+}
+______________________________________________________________________________________________________________________________
+5.
+APP.COMPONENT.HTML
+*********************
+<body link=" #4dd2ff">
+<div style="text-align:left">
+   <h1 style="color:blue">{{title}}!</h1>
+   <a [routerLink]="['\register']">Add</a>
+ </div>
+ <div id="router1">
+   <router-outlet></router-outlet>
+ </div>
+</body>
+REGISTER.HTML
+***************
+
+  <div style="text-align:left"> 
+    <table>
+      <tr><td><b>Create Customer</b></td></tr>
+      <tr>
+        <td>Name </td><td><input id="textbox1" #textbox1 type="text"></td>
+      </tr>
+      <tr>
+        <td>Age</td><td><input id="textbox2" #textbox2 type="text"></td>
+      </tr>
+    </table> 
+       <td><button  id="button" (click)="msg(textbox1.value,textbox2.value)">Submit</button></td>
+<div *ngIf="res==true" style="text-align:left" > 
+     <h4>{{result}}</h4><br>
+         <button id="button1" (click)="show()">Add</button><br>
+         <h4 *ngIf="res1==true" style="text-align:left" ></h4>
+         {{result1}}
+     </div></div>
+REGISTER.TS
+************
+export class RegisterComponent {
+public res;
+public res1;
+public result;
+public result1;
+constructor(private router:Router){}
+
+msg(v1,v2,v3)
+{
+  if(v1.length!=0 && v2.length!=0)
+  {
+    this.res=true;
+    this.result="You submitted successfully!"
+  }
+}
+  show()
+  {
+    this.res1=true;
+    this.result1="Submitted successfully"
+  }
+    
+}
+__________________________________________________________________________________________________________________________________________
+6.

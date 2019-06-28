@@ -1,0 +1,204 @@
+				STRINGS
+		******************************************
+
+2.
+	int sum=0;
+for(int i=0;i<s.length();i++){
+	if(Character.isDigit(s.charAt(i)))
+	{
+		sum=sum+Character.getNumericValue(s.charAt(i));
+	}
+}
+return sum
+*****************************
+3.
+String b="";
+int n=s1.length();
+for(int i=n-1;i>=0;i--)
+{
+	b=b+s1.charAt(i);
+}
+if(s1.equalsIgnoreCase(b)){
+			return true;}
+else
+	return false;
+	}
+********************************
+4.
+try
+		{
+		int res=Integer.parseInt(s1);
+		if(res<0){
+		return Math.abs(res);}
+		else
+			return -1;
+	}
+		catch(NumberFormatException e)
+		{
+			return -1;
+		}
+**************************************
+5
+int length=s.length();
+		if(length<=1)
+		{
+			return s;}
+		else
+		{
+		return s.charAt(length-1)+s.substring(1, length-1)+s.charAt(0);
+	}
+}
+*****************************************************
+6...UNSOLVED
+int n=0;
+for(int i=0;i<s.length;i++)
+{
+	String s1=s[i];
+	
+	char c=s1.charAt(i);
+	if(Character.isDigit(c) && (!Character.isAlphabetic(c)) )
+	{
+		n=1;
+	}
+	else {
+		n=-1;
+	}break;
+	}
+	return n;
+	
+	}
+**************************************
+7....UNSOLVED
+int sum=0;
+	for(int i=0;i<s1.length;i++)
+	{
+		String s2=s1[i];
+		for(int j=0;j<s2.length();j++)
+		{
+		   char c=s2.charAt(j);
+		    if(Character.isDigit(c))
+		    {
+		    	String s=String.valueOf(c);
+		    	sum=sum+Integer.parseInt(s);
+		    }break;
+		}
+	}
+	return sum;
+********************************************
+8
+char[] chars=s1.toCharArray();
+boolean b=true;
+for(int i=0;i<chars.length;i++)
+{
+	if(Character.isLetter(chars[i]))
+	{
+		if(b)
+		{
+		chars[i]=Character.toUpperCase(chars[i]);
+		}
+		b=false;
+	}
+	else 
+		{
+		b=Character.isWhitespace(chars[i]);
+		}
+}
+		return String.valueOf(chars);
+	}
+**********************************************************
+10
+String s=s1.substring(s1.length()-n1);
+		String res="";
+		for(int i=0;i<n1;i++)
+			res=res+s;	
+		return res ;
+********************************************
+11
+SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+			Date d1=format.parse(s1);
+			Date d2=format.parse(s2);
+			long diff1=d2.getTime()-d1.getTime();
+			long diff=TimeUnit.DAYS.convert(diff1, TimeUnit.MILLISECONDS);
+			long l=diff;
+			int i=(int)l;
+			return i;
+****************************************************************************
+12
+String pattern="^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.){3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)$";
+		if(ipAddress.matches(pattern))
+		return 1;
+		else
+			return 2;
+*************************************************************
+13
+Calendar cal=Calendar.getInstance();
+int year=cal.get(Calendar.YEAR);
+int input1=Integer.parseInt(ip1);
+int input2=Integer.parseInt(ip2);
+int exp=year-input1;
+if(exp>input2){
+		return true;}
+else
+	return false;
+***************************************
+14.
+return s1.replaceAll("[aAeEiIoOuU]","");
+*****************************
+15.
+String s1=input1.substring(5,input1.length());
+String s2=input2.substring(5,input2.length());
+int in1=Integer.parseInt(s1);
+int in2=Integer.parseInt(s2);
+int res=Math.abs((in1-in2)*input3);
+		return res;
+*****************************************
+17.unsolved
+SimpleDateFormat formatDate=new SimpleDateFormat("hh:mm a");
+try
+{
+Date d=formatDate.parse(s);
+return true;
+}
+catch(ParseException e)
+{
+	e.printStackTrace();
+}
+		return false;
+	}
+*******************************************************
+18.
+int len1=ip1.length();
+		int len2=ip2.length();
+		if(len1==len2)
+		{
+			return ip1+ip2;
+		}
+		else if (len2>len1)
+		{
+			return ip2.substring(len1, len2)+(ip1);
+		}
+			return ip1.substring(len2, len1)+(ip2);			
+	}	
+****************************
+19
+	if(ip2.length()==3)
+			
+			return (ip1.substring(0, 3).concat(ip1.substring(0, 3)));
+		
+		else if (ip2.length()==2)
+			return(ip1.substring(0, 2).concat(ip1.substring(0, 2)).concat(ip1.substring(0, 2)));
+		else
+			return ip1+ip2;
+	}
+*********************************************
+20
+int count=0;
+for(int i=0;i<s1.length;i++)
+{
+if(s1.charAt(i)==s1.charAt(i+1)
+ count++;
+}
+if(count>=3)
+  return true;
+else
+  return false;

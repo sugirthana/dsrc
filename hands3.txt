@@ -1,0 +1,21 @@
+1.response.setContentType("text/html");
+		PrintWriter out=response.getWriter();
+		Cookie ck=new Cookie("username",request.getParameter("username"));
+		response.addCookie(ck);
+		out.println("Cookies Saved");
+****************************************************************************************
+2.IN COOKIESERVLET
+response.setContentType("text/html"); 
+	    String str=request.getParameter("username");
+	    Cookie c=new Cookie("username",str);
+	    response.addCookie(c);
+	    response.sendRedirect("getServlet");
+IN GETSERVLET
+PrintWriter out=response.getWriter();
+		Cookie ck[]=request.getCookies();
+		for(Cookie c:ck)
+		{
+			out.print(c.getValue());
+		}
+************************************************************************
+3.

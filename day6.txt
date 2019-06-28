@@ -1,0 +1,173 @@
+				THREADS
+			************************
+1.
+Thread t=new Thread();
+return t.getPriority();
+*******************************************************************************
+2.
+return tName.getState().toString();
+************************************************************************
+3.
+String nn=null;
+nn=tName.getName().toString();
+return nn;
+****************************************************************************
+4.
+priority=tName.getPriority();
+ return priority;
+****************************************************************************
+5.UNSOLVED
+int isDaemon=0;00
+		boolean bool=tName.isDaemon();
+		if(bool==true)
+		return 1;
+		else
+			return 0;
+*****************************************************************************************
+6.
+tName.setName("MYTHREAD");
+		return tName;
+**********************************************************************************
+7.
+String s=tName.getName();
+	tName.setName(s.substring(0, 3));
+		return tName;
+***************************************************************************************
+8.
+String name=tName.getName();
+	String res="";
+for(int i=0;i<name.length();i++)
+{
+	char s=name.charAt(i);
+if(s=='a'||s=='e'||s=='i'||s=='o'||s=='u'||s=='A'||s=='E'||s=='I'||s=='O'||s=='U')
+	{res=res+s;}
+	}
+tName.setName(res);
+return tName;
+*********************************************************************************
+9.
+int IsAlive=0;
+	boolean bool=tName.isAlive();
+	if(bool==true)
+		return 1;
+	else
+		return IsAlive;
+******************************************************************************
+10
+String s=tName.getName();
+	String res=s.substring(0, 1).concat(s.substring(s.length()-1));
+	tName.setName(res);
+	tName.setPriority(Thread.MAX_PRIORITY);
+		return tName;
+	} 
+***********************************************************************************
+11
+groupName=tName.getThreadGroup().toString();
+		return groupName;
+***********************************************************************************
+12
+if(tName.getThreadGroup()==Thread.currentThread().getThreadGroup())
+		return "MAIN THREAD GROUP";
+	else
+		return "CHILD THREAD GROUP";
+**************************************************************************************
+13
+if(tName.getPriority()==1)
+			return "LOW PRIORITY";
+		if(tName.getPriority()==5)
+			return "MEDIUM PRIORITY";
+		if(tName.getPriority()==10)
+			return "MAXIMUM PRIORITY";
+		else
+			return priorityText;
+*************************************************************************
+14
+if(tName.getPriority()==0)
+			return "LOW PRIORITY";
+		if(tName.getPriority()>=1 && tName.getPriority()<=4)
+			return "BELOW NORMAL PRIORITY";
+		if(tName.getPriority()==5)
+			return "NORMAL PRIORITY";
+		if(tName.getPriority()>=6 && tName.getPriority()<=9)
+			return "ABOVE NORMAL PRIORITY";
+		if(tName.getPriority()==10)
+			return "MAXIMUM PRIORITY";
+		else
+		return priorityText;
+***********************************************************************************
+15 
+List<Integer> out=new ArrayList<Integer>();
+		for(int i=1;i<=limit;i++)
+		{
+		out.add(i);
+		try {
+			Thread.sleep(1000);		//no need to instantiate thread since already a thread is running
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		}
+		return out;
+**************************************************************************************
+16
+tName.start();
+	tName.sleep(5000);
+	statusText=tName.getState().toString();
+		return statusText;
+*****************************************************************************************
+17
+String prev=tName.getState().toString();
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		String curr=tName.getState().toString();
+		return prev+"-"+curr ;
+*********************************************************************************
+18
+		if(tName.getPriority()==1)
+			return "ONE";
+		if(tName.getPriority()==2)
+			return "TWO";
+		if(tName.getPriority()==3)
+			return "THREE";
+		if(tName.getPriority()==4)
+			return "FOUR";
+		if(tName.getPriority()==5)
+			return "FIVE";
+		if(tName.getPriority()==6)
+			return "SIX";
+		if(tName.getPriority()==7)
+			return "SEVEN";
+		if(tName.getPriority()==8)
+			return "EIGHT";
+		if(tName.getPriority()==9)
+			return "NINE";
+		if(tName.getPriority()==0)
+			return "ZERO";
+		
+		else
+		return Text ;
+******************************************************************************************
+19 UNSOLVED
+String s=tName.getName().toString();
+		if(tName.isDaemon())
+		{
+			tName.setName(s.concat("DAEMON"));
+			String s1=tName.getName().toString();
+			return s1;
+		}
+		else
+			tName.setDaemon(true);
+			return s;
+**********************************************************************
+20
+if(tName.isDaemon()==true)
+			{return "It is a Daemon Thread";}
+		else
+		return  "Its not a Daemon Thread";
+
+
+
+
+

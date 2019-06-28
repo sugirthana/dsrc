@@ -1,0 +1,483 @@
+2.try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");
+			Statement stmt=con.createStatement();
+			isDone=stmt.execute("create table Department (DeptNo int primary key,DeptName varchar(20),Location varchar(20))");
+			
+    	} 
+    	catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+******************************************************************************************************************************************************
+3.try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3307/tempdb","root","dsrc");
+			Statement stmt=con.createStatement();
+			isDone=stmt.execute("create table LeaveInfo (EmpNo int,FromDate varchar(20),ToDate varchar(20))");
+		} 
+    	
+    	catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+********************************************************************************************************************************************
+4.try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3307/tempdb","root","dsrc");
+			Statement stmt=con.createStatement();
+			String query="insert into Employee(EmpNo,FirstName,LastName) values(?,?,?)";
+			PreparedStatement ps=con.prepareStatement(query);
+			ps.setInt(1,id );
+			ps.setString(2, Fname);
+			ps.setString(3, Lname);
+			int rs=ps.executeUpdate();
+			if(rs>0)
+				{isDone=true;}
+		} 
+****************************************************************************************************
+5.try{
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3307/tempdb","root","dsrc");
+			Statement stmt=con.createStatement();
+			String query="insert into Employee(EmpNo,FromDate,ToDate) values(?,null,null)";
+			PreparedStatement ps=con.prepareStatement(query);
+			ps.setInt(1,id );
+			int rs=ps.executeUpdate();
+			if(rs>0)
+				{isDone=true;}
+    }
+			catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	
+    	
+    	return isDone;
+**********************************************************************************************************************************************************
+6.try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3307/tempdb","root","dsrc");
+			PreparedStatement ps=con.prepareStatement("update Employee set FirstName=? where EmpNo=?");
+			ps.setString(1, name);
+			ps.setInt(2, empno);
+			int rs=ps.executeUpdate();
+			if(rs>0)
+			{
+				isDone=true;
+			}
+    	}
+    	catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return isDone;
+*************************************************************************************************************************************
+7.try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3307/tempdb","root","dsrc");
+			PreparedStatement ps=con.prepareStatement("update Employee set LastName=? where EmpNo=?");
+			ps.setString(1, name);
+			ps.setInt(2, empno);
+			int rs=ps.executeUpdate();
+			if(rs>0)
+			{
+				isDone=true;
+			}
+    	}
+    	catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+*************************************************************************************************************************************
+8.try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3307/tempdb","root","dsrc");
+			PreparedStatement ps=con.prepareStatement("update Employee set FirstName=?,LastName=? where EmpNo=?");
+			ps.setString(1, FirstName);
+			ps.setString(2, LastName);
+			ps.setInt(3, empno);
+			int rs=ps.executeUpdate();
+			if(rs>0)
+			{
+				isDone=true;
+			}
+    	}
+    	catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+****************************************************************************************************************************************************************
+9.try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");
+			Statement stmt=con.createStatement();
+			PreparedStatement ps=con.prepareStatement("Select FirstName from Employee where EmpNo =?");
+			ps.setInt(1, empno);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				fName=rs.getString(1);
+			}
+			
+    	}
+			catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+*****************************************************************************************************************************************************************************************
+10.try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");
+			Statement stmt=con.createStatement();
+			PreparedStatement ps=con.prepareStatement("Select LastName from Employee where EmpNo =?");
+			ps.setInt(1, empno);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				lName=rs.getString(1);
+			}
+			
+    	}
+			catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+****************************************************************************************************************************************
+11.try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");
+			Statement stmt=con.createStatement();
+			PreparedStatement ps=con.prepareStatement("Select concat(FirstName,LastName) from Employee where EmpNo =?");
+			ps.setInt(1, empno);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				 str=rs.getString(1);
+			}
+			
+    	}
+			catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return str;
+**************************************************************************************************************************************************************************
+12.try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");
+			Statement stmt=con.createStatement();
+			PreparedStatement ps=con.prepareStatement(("alter table Employee add ")+columnName+(" varchar(20)"));
+			int res=ps.executeUpdate();
+			if(res>0)
+			{
+				isDone=true;
+			}
+			
+    	}
+			catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+********************************************************************************************************************************************************************************
+13.  try {
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");
+				Statement stmt=con.createStatement();
+				for(int i=0;i<columnName.length;i++)
+				{
+				PreparedStatement ps=con.prepareStatement(("alter table Employee add ")+columnName[i]+(" varchar(20)"));
+				ps.executeUpdate();}
+	    	}
+				catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			    
+    	    	  return isDone;
+**********************************************************************************************************************************************************************************
+14.try {
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");				
+				PreparedStatement ps=con.prepareStatement("delete from Employee where EmpNo=?");
+				ps.setInt(1, empno);
+				int r=ps.executeUpdate();
+				if(r>0)
+				{
+					isDone=true;
+				}
+	    	}
+				catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+********************************************************************************************************************************************************************************
+15.try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");				
+			PreparedStatement ps=con.prepareStatement("Update Employee set LastName=null where EmpNo=?");
+			ps.setInt(1, empno);
+			int r=ps.executeUpdate();
+			if(r>0)
+			{
+				isDone=true;
+			}
+    	}
+			catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+************************************************************************************************************************************************************************************
+16.try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");
+			PreparedStatement ps=con.prepareStatement("insert into Department values(?,?,?)");
+			ps.setInt(1,deptno);
+			ps.setString(2, deptName);
+			ps.setString(3, Location);
+			int r=ps.executeUpdate();
+			if(r>0)
+			{
+				isDone=true;
+			}
+    	}
+    	catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+*******************************************************************************************************************************************************************************************
+17.try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");
+			PreparedStatement ps=con.prepareStatement("insert into Department (DeptNo,Location) values(?,?)");
+			ps.setInt(1,deptno);
+			ps.setString(2, Location);
+			int r=ps.executeUpdate();
+			if(r>0)
+			{
+				isDone=true;
+			}
+    	}
+    	catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+**************************************************************************************************************************************************************************
+18.temp=new ArrayList<String>();
+    	try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");
+			PreparedStatement ps=con.prepareStatement("select FirstName from  Employee where job=?");
+			ps.setString(1, job);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				temp.add(rs.getString(1));
+			}
+    	}
+    	catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    return temp;
+   ************************************************************************************************************************************************************************************************
+19.temp=new TreeMap<Integer,String>();
+    	try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");
+			PreparedStatement ps=con.prepareStatement("select EmpNo,FirstName from  Employee");
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				temp.put(rs.getInt(1),rs.getString(2));
+			}
+    	}
+    	catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return temp;
+**************************************************************************************************************************************************************************************************************
+20.temp=new TreeMap<Integer,String>();
+    	try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");
+			PreparedStatement ps=con.prepareStatement("select EmpNo,FirstName from  Employee where FirstName like 'A%'");
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				temp.put(rs.getInt(1),rs.getString(2));
+			}
+    	}
+    	catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+    	   return temp;
+************************************************************************************************************************************************************************************
+21.try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");
+			String query="insert into Department(DeptNo,DeptName,Location) values(?,?,?)";
+			PreparedStatement ps=con.prepareStatement(query);
+			ps.setInt(1,depNo );
+			ps.setString(2, deptName);
+			ps.setString(3, loc);
+			int rs=ps.executeUpdate();
+			if(rs>0)
+				{isDone=true;}
+		} 
+    	catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return isDone;
+******************************************************************************************************************************************************************************
+22. boolean isDone=false;
+         try {
+ 			Class.forName("com.mysql.jdbc.Driver");
+ 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");				
+ 			PreparedStatement ps=con.prepareStatement("Update Department set DeptName=? where DeptNo=?");
+ 			ps.setString(1, deptName);
+ 			ps.setInt(2, deptNo);
+ 			int r=ps.executeUpdate();
+ 			if(r>0)
+ 			{
+ 				isDone=true;
+ 			}
+     	}
+ 			catch (ClassNotFoundException e) {
+ 				// TODO Auto-generated catch block
+ 				e.printStackTrace();
+ 			} catch (SQLException e) {
+ 				// TODO Auto-generated catch block
+ 				e.printStackTrace();
+ 			}
+   return isDone;
+********************************************************************************************************************************************************************************************
+23.
+temp=new ArrayList<String>();
+    	try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");
+			PreparedStatement ps=con.prepareStatement("select DeptName from  Department where Location=?");
+			ps.setString(1,loc);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				temp.add(rs.getString(1));
+			}
+    	}
+    	catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+**********************************************************************************************************************************
+24.temp=new TreeMap<Integer,String>();
+    	try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");
+			PreparedStatement ps=con.prepareStatement("select DeptNo,DeptName from  Department where DeptName like 'C%'");
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				temp.put(rs.getInt(1),rs.getString(2));
+			}
+    	}
+    	catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return temp;
+*****************************************************************************************************************************************************************
+25.try {
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/tempdb","root","dsrc");
+				for(int i=0;i<columnName.length;i++)
+				{
+				PreparedStatement ps=con.prepareStatement(("alter table Department add ")+columnName[i]+(" varchar(20)"));
+				rs=ps.executeUpdate();
+					isDone=true;
+					
+				}
+	    	}
+				catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+}
+*************************************************************************************************************************************************************************************

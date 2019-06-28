@@ -1,0 +1,285 @@
+			EXCEPTION
+		*****************************
+1
+try
+{
+      res=a/b;
+}
+catch(Exception e)
+{
+	system.out.println(e.getMessage());
+}
+finally
+{
+return res;
+}
+}
+}
+****************************
+2
+char ch='z';
+try
+{
+ch=input.charAt(3);
+  return ch;
+}
+catch(Exception e)
+{
+System.out.println(e.getMessage());
+}
+
+return ch;
+}
+***************************************
+3.
+res=a/b;
+if(b<0)
+    throw new Exception ("NumOneIsNegativException");
+return res;
+}
+****************************************************************
+4.... throws Exception in main()
+public String verfiyAge(int age) throws Exception 
+	{
+		String res="Age Verified";
+		if(age<18)
+			throw new Exception("Age is less than 18");
+		
+		return res;
+*******************************************************
+5...throws Exception in main()
+if(age>90)
+throw new Exception("Age should not exceed 90"); 
+return res ;
+************************************************
+6
+public String validatePassword(String pass)throws Exception
+	{
+		String s="Valid";
+		 Pattern special = Pattern.compile ("[a-zA-Z0-9]*");
+		 Matcher match=special.matcher(pass);	
+		 if(match.matches())
+		 throw new Exception( "Password Too Weak");
+		 
+		 return s;
+	}
+**************************************************
+7...throws Exception in main()
+public String validatePassword(String pass)throws Exception
+	{
+		String res="Valid";
+		 int count1=0,count2=0;
+		
+		for(int i=0;i<pass.length();i++)
+			{
+			char c=pass.charAt(i);
+			if(Character.isDigit(c))
+				count1++;
+			if(Character.isUpperCase(c))	
+				count2++;
+			}
+		if(count1==1 && count2==1)
+	          return res;
+		else
+			throw new Exception( "Password Too Weak") ;
+**********************************************************************
+8...throws Exception in main()
+public String validatePassword(String pass)throws Exception 
+	{
+		String res="Valid";
+		 int count1=0,count2=0;
+		
+		for(int i=0;i<pass.length();i++)
+			{
+			char c=pass.charAt(i);
+			if(Character.isDigit(c))
+				count1++;
+			if(Character.isUpperCase(c))	
+				count2++;
+			}
+		if(count1==0)
+			throw new Exception ("Digit Not Found");
+		
+		if(count2==0)
+	 throw new Exception ("Upper Case Not Found");
+		
+		else
+			return res;
+************************************************************
+9....throws Exception in main()
+public int countVow(String str) throws Exception
+	{
+		int count = 0;
+	
+		for(int i=0;i<str.length();i++)
+		{
+			if(str.charAt(i)=='a' ||str.charAt(i)=='e' ||str.charAt(i)=='i'||str.charAt(i)=='o'||str.charAt(i)=='u'||str.charAt(i)=='A'||str.charAt(i)=='E'||str.charAt(i)=='I'||str.charAt(i)=='O'||str.charAt(i)=='U')
+				count++;
+		}
+		if(count==0)
+		{
+			throw new Exception ("VowelNotFoundException");
+			}
+		return count;
+	}
+*****************************************************************
+10
+public int convertToNumber(String input)throtws NumberFormatException 
+	{
+		int num=0;
+	try
+	{
+	num=Integer.parseInt(input);
+	}
+	catch(NumberFormatException e)
+	{
+		throw new NumberFormatException("String Contain Numbers");
+	}        
+     return num;
+*************************************************************
+11...UNSOLVED
+public class UserCode {
+	int z;
+	   public void divide( int x, int y)throws ArithmeticException 
+	    { 
+		   z=x/y;  
+	     } 
+
+	   public int result(int x, int y)throws ArithmeticException //use return type
+	   {
+		   try
+		   {
+			   divide(x,y);
+		   }
+		   catch(ArithmeticException e)
+		   {
+			   throw new ArithmeticException("Denominator is zero");
+		   }
+		   return z;
+	   }
+******************************************************************************
+12
+class StringIndexOutOfBoundsException extends Exception
+{
+	public StringIndexOutOfBoundsException(String msg)
+	{
+		super(msg);
+	}
+}
+public class UserCode {
+	
+	public String checkEligibilty(String data) throws StringIndexOutOfBoundsException{
+ 
+		String s=data.substring(2,5);
+		if(s.charAt(0)=='v')
+		{
+			throw new java.lang.StringIndexOutOfBoundsException();
+	}
+		return s;
+	 
+	   } 
+	   } 
+***************************************************************************
+13
+
+	public String dateCheck(int day,int month,int year) throws Exception
+	{
+		String res="Day is Valid";
+		if(day<0)
+		{
+			throw new Exception ("Negative Day");
+		}
+		if(day==0)
+		{
+			throw new Exception ("Invalid Day");
+		}
+		if(day>31)
+		{
+			throw new Exception ("Day Limit Exceeded");
+		}
+		else
+		return res;
+********************************************************************************
+16
+ * */
+		String res="Day is Valid";
+		if(day>31 || month>12 || year >2020)
+		{
+			throw new Exception ("Invalid Date");
+		}
+		if(year%4==0 && month==2 && day>29)
+		{
+			throw new Exception ("Leap Year Day Error");
+		}
+		else
+		return res;
+*********************************************************************
+17
+for(int i=0;i<array.length;i++)
+		{
+			sum=sum+array[i];
+		if(array[i]<0)
+			throw new Exception ("Array Have Negatives");
+		if(array[i]==0)
+			throw new Exception ("Array Have Zeros");
+		
+		}
+		return sum;
+	}
+******************************************************************************
+19
+for(int i=0;i<input.length();i++)
+		{
+			char c=input.charAt(i);
+			if(Character.isDigit(c))
+				throw new Exception ("Invalid String");
+		}
+		int len=input.length();
+		for(int i=len-1;i>=0;i--)
+		{
+			res=res+input.charAt(i);
+		}
+		if(input.equalsIgnoreCase(res))
+			return "Pallindrome";
+	else
+		return "Not a Pallindrome";
+	}
+************************************************************************
+20
+int[] arr=new int[5];
+		
+		try
+		{
+			arr[arrayposition]=a/b;	
+		}
+		catch(ArithmeticException e)
+		{
+			System.out.println(e.getMessage());
+		}
+		catch(ArrayIndexOutOfBoundsException e)
+		{
+			System.out.println(e.getMessage());
+		}
+*****************************************************************************
+22
+public String check(String fname, String lname, int rollnum) throws NullPointerException {
+		String output=null;
+		try
+		{
+			String Lname=lname.toUpperCase();
+			output=Lname.concat(fname);
+		}
+		catch(NullPointerException e)
+		{
+			throw new NullPointerException(e.getMessage());
+		}
+		return output;
+*********************************************************************************
+23
+if(s1.contains(".jpeg"))
+				return "jpeg";
+			if(!s1.contains("."))
+				throw new Exception ("NotValidFormat");
+			else 
+				throw new Exception ("NotFileExtension");
+}

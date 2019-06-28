@@ -1,0 +1,273 @@
+1.<form>
+Enter Name<input type="text" name="name">
+<input type="submit" name="show"></form>
+<%! String name; %>
+<% 
+if(request.getParameter("name")!=null)
+{
+	name=request.getParameter("name");
+	
+%>
+<p>welcome <%= name %></p>
+<%} %>
+*******************************************************************
+2.<FORM action="index.jsp" METHOD="POST">
+           <table><tr><td> Login Name </td><td><INPUT TYPE="TEXT" NAME="username"></td></tr>
+            <tr><td>Password </td><td><input type="password" name="password"></td></tr>
+            
+             <tr><td> </td><td> <INPUT TYPE="SUBMIT" value="Login" ></td></tr>
+</table></FORM>
+<%! String name; 
+String pass;%>
+<%
+	if(request.getParameter("username")!=null && request.getParameter("password")!=null)
+	{
+		pass=request.getParameter("password");
+		name=request.getParameter("username");
+	if(name.equals("sa") && pass.equals("pass"))
+		{
+%>
+<p> valid User</p>
+<%}
+	else
+	{ %>
+		<p>Invalid User</p>
+	
+	<%}
+	   } %>
+********************************************************************************************************
+3.<FORM action="index.jsp" METHOD="POST">
+           <table><tr><td> Login Name </td><td><INPUT TYPE="TEXT" NAME="username"></td></tr>
+            <tr><td>Password </td><td><input type="password" name="password"></td></tr>
+            
+             <tr><td> </td><td> <INPUT TYPE="SUBMIT" value="Login" ></td></tr>
+</table></FORM>
+<%! String name; 
+String pass;%>
+<%
+	if(request.getParameter("username")!=null && request.getParameter("password")!=null)
+	{
+		pass=request.getParameter("password");
+		name=request.getParameter("username");
+	if(name.equals("sa") && pass.equals("pass"))
+		{
+%>
+<font color="green"><b>Valid User</b></font>
+<%}
+	else
+	{ %>
+	<font color="red"><b><i>Invalid User</i></b></font>	
+	<%}
+	   } %>
+********************************************************************************************************
+4.<form>
+Enter Number<input type="number" name="number">
+<input type="submit" name="show"></form>
+<table border=1 width=20%>
+<%
+String num=request.getParameter("number");
+
+int res;
+ if(num!=null || num.isEmpty())
+{
+
+res=Integer.parseInt(num);
+
+for(int i=1;i<=10;i++)
+{%>
+	
+	<tr><td><%= res %></td><td> X</td><td><%= i %></td><td>=</td><td><%= res*i %></td></tr>
+<%}
+}%>
+
+</table>
+***************************************************************************************************************************
+5.<form>
+Select country<select name="country">
+<option value="NA">NA</option>
+<option value="India">India</option>
+<option value="China">China</option>
+<option value="Pakistan">Pakistan</option>
+<option value="France">France</option>
+</select>
+<input type="submit" value="SHOW_CAPITAL">
+</form>
+
+<%! String cname;%>
+<% cname=request.getParameter("country");
+if(cname!=null)
+	{
+	if(cname.equals("NA"))
+	{
+	out.println("Invalid Country");
+	} 
+	if(cname.equals("India"))
+	{
+	out.println("Capital is Delhi");
+	} 
+if(cname.equals("China"))
+{
+	out.println("Capital is Beijing");
+}
+if(cname.equals("Pakistan"))
+{
+	out.println("Capital is Islamabad");
+}
+if(cname.equals("France"))
+{
+	out.println("Capital is Paris");
+}
+}%>
+***************************************************************************************************************
+6.<form>
+Select country<select name="country">
+<option value="India">India</option>
+<option value="China">China</option>
+<option value="Pakistan">Pakistan</option>
+<option value="France">France</option>
+<option value="NA">NA</option>
+</select>
+<input type="submit" value="SHOW_CITIES">
+</form>
+<%! String cname;%>
+<% cname=request.getParameter("country");
+if(cname!=null)
+	{
+	if(cname.equals("India"))
+	{%>
+	Select City<select name="city">
+<option value="Chennai">Chennai</option>
+<option value="Mumbai">Mumbai</option>
+<option value="Madurai">Madurai</option>
+</select>	
+	<%} %>
+	
+	<% 
+	if(cname.equals("China"))
+	{%>
+	Select City<select name="city">
+<option value="Shangai">Shangai</option>
+<option value="chengdu">chengdu</option>
+<option value="Tianjin">Tianjin</option>
+</select>	
+	<%} %>
+	
+	<% 
+	if(cname.equals("Pakistan"))
+	{%>
+	Select City<select name="city">
+<option value="karachi">karachi</option>
+<option value="Lahore">Lahore</option>
+</select>	
+	<%} %>
+	
+	<% 
+	if(cname.equals("France"))
+	{%>
+	Select City<select name="city">
+<option value="paris">paris</option>
+<option value="Lyon">Lyon</option>
+</select>	
+	<%}
+	} %>
+****************************************************************************************************
+7.<form>
+<input type="submit" name="vname" value="CAR">
+<input type="submit" name="vname" value="BIKE">
+</form>
+<%! String name;
+%>
+<% name=request.getParameter("vname");
+if(name!=null)
+{
+if(name.equals("CAR"))
+{%>
+	<img src="car.jpg">
+<%} %>
+<% 
+if(name.equals("BIKE"))
+{%>
+	<img src="bike.jpg">
+<% }
+}
+%>
+**************************************************************************************************
+8.LOGIN
+<FORM action="index.jsp" METHOD="POST">
+           <table><tr><td> Login Name </td><td><INPUT TYPE="TEXT" NAME="username"></td></tr>
+            <tr><td>Password </td><td><input type="password" name="password"></td></tr>
+            
+             <tr><td> </td><td> <INPUT TYPE="SUBMIT" value="Login" ></td></tr>
+</table></FORM>
+
+INDEX
+<%!
+String name;
+String pass;%>
+<% name=request.getParameter("username");
+pass=request.getParameter("password");
+if(name!=null && pass!=null)
+{
+	if(name.equals("sa") && pass.equals("pass"))
+	{
+		response.sendRedirect("home.jsp");
+	}
+	else
+	{
+		response.sendRedirect("error.jsp");
+	}
+}
+%>
+HOME
+<%String name=request.getParameter("username"); %>
+ <b>Welcome User sa</b>
+ERROR
+<h1>Invalid Credentials</h1>
+**********************************************************************************************************
+9.HOME
+<%String name=request.getParameter("username"); %>
+ <b>Welcome User <%=session.getAttribute("username") %></b>
+
+INDEX
+<% 
+if(request.getParameter("username")!=null && request.getParameter("password")!=null)
+{
+	if(request.getParameter("username").equals("sa") &&request.getParameter("password").equals("pass"))
+	{
+		String name=request.getParameter("username");
+		session.setAttribute("username", name);
+		response.sendRedirect("home.jsp");
+	}
+	else
+	{
+		String name=request.getParameter("username");
+		String pass=request.getParameter("password");
+		session.setAttribute("username", name);
+		session.setAttribute("password", pass);
+		response.sendRedirect("error.jsp");
+	}
+}
+%>
+
+ERROR
+<h1>Login Failed:</h1>
+<% String name=session.getAttribute("username").toString();
+String pass=session.getAttribute("password").toString();
+if(name.length()==0 )
+{%>
+	Reason : Username Blank
+	<%} 
+else if(pass.length()==0)
+{%>
+	Reason : password Blank
+	<%} 
+else if(!pass.equals("pass"))
+{%>
+	Reason : Invalid Password
+	<%}
+else if(!name.equals("sa"))
+{ %>
+	Reason : Invalid Username
+<%}%>
+***********************************************************************************************************************************
+10.

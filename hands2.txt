@@ -1,0 +1,184 @@
+Login Name <input type="text" name="name"><br>
+Password <input type="password" name="pass"><br>
+<input type="submit" value="Login"></center>
+
+PrintWriter out=response.getWriter();
+		String name=request.getParameter("name");
+		String pass=request.getParameter("pass");
+		if(name.equals("sa") && pass.equals("pass"))
+		{
+			out.println("Welcome User");
+		}
+		else
+		{
+			out.print("Invalid User");
+		}
+****************************************************************************************
+<form action="LoginServlet">
+<center>
+<table>
+<tr><td>Login Name </td><td><input type="text" name="name"></td></tr>
+<tr><td>Password </td><td><input type="password" name="pass"></td></tr>
+<tr><td> </td><td><input type="submit" value="Login"></td></tr></table>
+</center>
+</form>
+
+
+PrintWriter out=response.getWriter();
+		String name=request.getParameter("name");
+		String pass=request.getParameter("pass");
+		if(name.equals("sa") && pass.equals("pass"))
+		{
+			response.sendRedirect("home.html");
+		}
+		else
+		{
+			out.print("Invalid User");
+		}
+*******************************************************************************************
+PrintWriter out=response.getWriter();
+		String c=request.getParameter("coun");
+		if(c.equals("India"))
+		{
+			out.println("<html><body><center><h1>Cities</h1> <br><br> Chennai ,Bengalaru ,Cochin </center></body></html>");
+		}
+		if(c.equals("USA"))
+		{
+			out.println("<html><body><center><h1>Cities</h1> <br><br>  Atlanta , Chicago , Dallas ,Florida </center></body></html>");
+		}
+		if(c.equals("Australia"))
+		{
+			out.println("<html><body><center><h1>Cities</h1> <br><br> Sidny , Canbara </center></body></html>");
+
+		}
+
+
+
+<form action="GetServlet">
+<center>
+Select Country<select name=coun>
+<option value="India">India</option>
+<option value="USA">USA</option>
+<option value="Australia">Australia</option>
+</select>
+<input type="submit" ></center>
+</form>
+**********************************************************************************************************************************************
+PrintWriter out=response.getWriter();
+		String c=request.getParameter("coun");
+		if(c.equals("India"))
+		{
+			out.println("<html><body><center><h1>Cities</h1> <br><br> "
+					+ "<select><option value=chennai>chennai</option>"
+					+"<option value=Bengalaru>Bengaluru</option>"
+					+"<option value=Cochin>Cochin</option></center></body></html>");
+		}
+		if(c.equals("USA"))
+		{ 
+			out.println("<html><body><center><h1>Cities</h1> <br><br> "
+					+ "<select><option value=Atlanta>Atlanta</option>"
+					+"<option value= Chicago>  Chicago</option>"
+					+"<option value=Dallas>Dallas</option>"
+					+"<option value= Florida> Florida</option></center></body></html>");
+		}
+		if(c.equals("Australia"))
+		{
+			out.println("<html><body><center><h1>Cities</h1> <br><br> "
+					+ "<select><option value=Sidny>Sidny</option>"
+					+"<option value=Canbara>Canbara</option></center></body></html>");
+		}
+***************************************************************************************************************************************************************
+8.PrintWriter out=response.getWriter();
+		String c=request.getParameter("coun");
+		if(c.equals("India"))
+		{
+			out.println("<html><body><form action=GetCityServlet><center><h1>Cities</h1> <br><br> "
+					+ "<select name=cit><option value=chennai>chennai</option>"
+					+"<option value=Bengalaru>Bengaluru</option>"
+					+"<option value=Cochin>Cochin</option>"
+					+ "<input type=hidden name=country value="+c+">"
+					+ "<input type=submit></center></form></body></html>");
+		}
+		if(c.equals("USA"))
+		{ 
+			out.println("<html><body><form action=GetCityServlet><center><h1>Cities</h1> <br><br> "
+					+ "<select name=cit><option value=Atlanta>Atlanta</option>"
+					+"<option value= Chicago>  Chicago</option>"
+					+"<option value=Dallas>Dallas</option>"
+					+"<option value= Florida> Florida</option>"
+					+ "<input type=hidden name=country value="+c+">"
+					+ "<input type=submit></center></form></body></html>");
+		}
+		if(c.equals("Australia"))
+		{
+			out.println("<html><body><form action=GetCityServlet><center><h1>Cities</h1> <br><br> "
+					+ "<select name=cit><option value=Sidny>Sidny</option>"
+					+"<option value=Canbara>Canbara</option>"
+					+ "<input type=hidden name=country value="+c+">"
+					+ "<input type=submit></center></form></body></html>");
+		}
+
+
+PrintWriter out=response.getWriter();
+		String co=request.getParameter("country");
+		String ci=request.getParameter("cit");
+		out.println("<html><body><center><h1>Summary</h1>"
+				+ "<table border=1 width=30%> <tr><td>country</td><td>"+co+"</td></tr>"
+				+ "<tr><td>City</td><td>"+ci+"</td></tr></table></center></body></html>");
+********************************************************************************************************************************
+9.<form action="DisplayServlet">
+<center><h1>Registration</h1>
+<table>
+<tr><td>Name</td><td><input type="text" name="loginname"></td></tr>
+<tr><td>password</td><td><input type="password" name="loginpass"></td></tr>
+<tr><td>Age</td><td><input type="text" name="age"></td></tr>
+<tr><td>Gender</td><td><input type="radio" name="Gender" value="M">M
+<input type="radio" name="Gender" value="F">F</td></tr>
+<tr><td>Select Country</td><td><select name="country">
+<option value="India">India</option>
+<option value="USA">USA</option></select></td></tr>
+<tr><td>Address</td><td><textarea rows=4 column=20 name="address"></textarea></td></tr>
+<tr><td>Email</td><td><input type="email" name="email"></td></tr>
+<tr><td></td><td><input type="submit"></td></tr>
+</table></center></form>
+
+
+PrintWriter out=response.getWriter();
+		String name=request.getParameter("loginname");
+		String pass=request.getParameter("password");
+		String age=request.getParameter("age");
+		String gender=request.getParameter("gender");
+		String count=request.getParameter("country");
+		String add=request.getParameter("address");
+		String email=request.getParameter("email");
+		
+		if(name.length()==0||pass.length()==0||age.length()==0||gender==null||count.length()==0||add.length()==0||email.length()==0)
+		{
+			response.sendRedirect("error.html");
+		}
+		else
+		{
+			response.sendRedirect("home.html");
+		}
+	}
+********************************************************************************************************************************************************************************
+10.if(name.isEmpty()||pass.isEmpty()||age.isEmpty()||gender==null||count.isEmpty()||add.isEmpty()||email.isEmpty())
+		{
+			response.sendRedirect("error.html");
+		}
+		else
+		{
+			out.println("<html><body><form action=home.html><center>"
+					+ "Login name - "+name+"<br>"
+							+ "Password -"+pass+"<br>"
+									+ "Age - "+age+"<br>"
+											+ "Gender - "+gender+"<br>"
+													+ "Country - "+count+"<br>"
+															+ "Address - "+add+"<br>"
+																	+ "Email - "+email+"<br>"
+																			+ "<input type=submit value=confirm></center></form></body></html>"
+						);
+			
+		}
+***************************************************************************************************************************************************************************************************************************************************
+

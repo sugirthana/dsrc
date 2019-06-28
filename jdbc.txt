@@ -1,0 +1,102 @@
+Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cricket","root","dsrc");
+			Statement stmt=con.createStatement();
+			int rs=stmt.executeUpdate("insert into players(players_id,players_name,players_age,players_type) values(99,'Deepak',29,'Domestic')");
+			ResultSet rs1=stmt.executeQuery("Select * from players");
+			while(rs1.next())
+			{
+				System.out.println(rs1.getString(1)+" : " +rs1.getString(2)+" : "+rs1.getString(3));
+			}
+********************************************************************************************************************************************************************
+Scanner sc=new Scanner(System.in);
+		System.out.println("Enter players's ID,name,age,type");
+		int id=sc.nextInt();
+		String name=sc.next();
+		int age=sc.nextInt();
+		String type=sc.next();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cricket","root","dsrc");
+			PreparedStatement ps=con.prepareStatement("insert into Players values(?,?,?,?)");
+			ps.setInt(1,id);
+			ps.setString(2, name);
+			ps.setInt(3, age);
+			ps.setString(4, type);
+			ps.executeUpdate();
+			Statement stmt=con.createStatement();
+			ResultSet rs=stmt.executeQuery("select * from Players");
+			while(rs.next())
+			{
+				System.out.println(rs.getString(1)+" : " +rs.getString(2)+" : "+rs.getString(3) +" : "+rs.getString(4));
+			}
+*****************************************************************************************************************************************************************************************
+
+	static JTextField txt1;
+	static JTextField txt2;
+	static JTextField txt3;
+	static JComboBox box;
+	Application()
+	{
+	String s[]={"Domestic","International"};
+	JFrame frame=new JFrame("Application");
+	JLabel lbl1=new JLabel("players ID");
+	txt1=new JTextField(20);
+	JLabel lbl2=new JLabel("players Name");
+	txt2=new JTextField(20);
+	JLabel lbl3=new JLabel("players age");
+	txt3=new JTextField(20);
+	JLabel lbl4=new JLabel("players Type");
+	 box=new JComboBox(s);
+	JLabel lbl5=new JLabel("");
+	JButton b=new JButton("Save");
+	b.addActionListener(new ActionListener(){
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cricket","root","dsrc");
+				PreparedStatement ps=con.prepareStatement("insert into Players values(?,?,?,?)");
+				ps.setInt(1, Integer.parseInt(txt1.getText()));
+				ps.setString(2, txt2.getText());
+				ps.setInt(3, Integer.parseInt(txt3.getText()));
+				ps.setString(4, box.getSelectedItem().toString());
+				ps.executeUpdate();
+				Statement stmt=con.createStatement();
+				ResultSet rs=stmt.executeQuery("select * from Players");
+				while(rs.next())
+				{
+					System.out.println(rs.getString(1)+" : " +rs.getString(2)+" : "+rs.getString(3)+" : "+rs.getString(4) );
+				}
+			}
+			catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+	});
+	JPanel panel=new JPanel();
+	frame.add(panel);
+	panel.add(lbl1);
+	panel.add(txt1);
+	panel.add(lbl2);
+	panel.add(txt2);
+	panel.add(lbl3);
+	panel.add(txt3);
+	panel.add(lbl4);
+	panel.add(box);
+	panel.add(lbl5);
+	panel.add(b);
+	frame.setSize(500, 600); 
+	frame.setVisible(true);
+	}
+	public static void main(String[] args) {
+		Application app=new Application();				
+		}				
+	}

@@ -1,0 +1,226 @@
+public static long find_ncr(int n, int r) {
+		   return (factorial(n)/(factorial(n-r)*factorial(r)));
+		}
+	public static long find_npr(int n, int r) {
+		
+		   return (factorial(n)/(factorial(n-r)));
+		} 
+	public static long factorial(int n) { 
+		int factorial=1, i;
+        for(i=1; i<=n; i++)
+        {
+            factorial = factorial*i;
+        }
+        return factorial;
+		}
+
+***********************************************************
+public class UserCode {
+	public static int findHCF(int x,int y)
+	{
+		int hcf=1;
+		for(int i=1;i<=x && i<=y;i++)
+		{
+			if(x%i==0 && y%i==0)
+				hcf=i;
+		}
+	       return hcf;
+	      
+		
+	}
+	
+	public static int findLCM(int x,int y)
+	{
+		int lcm;
+		lcm=(x>y)?x:y;
+		while(true)
+		{
+			if(lcm%x==0  && lcm%y==0)
+			{
+				break;
+			}
+			++lcm;
+		}
+		
+	        return lcm;
+	}
+
+}
+******************************************
+public static long find_ncr(int n, int r) {
+		   return (factorial(n)/(factorial(n-r)*factorial(r)));
+		}
+	public static long find_npr(int n, int r) {
+		
+		   return (factorial(n)/(factorial(n-r)));
+		} 
+	public static long factorial(int n) { 
+		int factorial=1, i;
+        for(i=1; i<=n; i++)
+        {
+            factorial = factorial*i;
+        }
+        return factorial;
+		}
+*********************************************
+PERFECT NUMBER
+int sum=0;
+		for(int i = 1; i < n; i++)
+        {
+            if(n % i == 0)
+            {
+                sum = sum + i;
+            }
+        }
+        if(sum == n)
+		
+		return 1;
+        
+        else
+        	return -1;
+********************************
+
+public int ticketno=100;
+	public int boardingno=88667;
+	public String flightname="Indigo";
+	public int amount=80000;
+	public void detailsOfFlight()
+	{	
+	}
+	public String displayDetails()
+	{
+		return Integer.toString(ticketno)+Integer.toString(boardingno)+flightname+Integer.toString(amount);
+	}**********************
+
+public class FlightManagement {
+	 int ticktno=100;
+	 int boardingno=88667;
+	 String flightname="Indigo";
+	 int amount=80000;
+	 public static void main(String[] args) {
+		 FlightManagement f = new FlightManagement(100,88667,"indigo",80000);
+	}
+}
+
+
+int Pnrno=4562342;
+int trainno=8098;
+String trainname="TVCExpress";
+int fare=679;
+
+public static void main(String args[])
+{
+TrainManagement t=new TrainManagement();
+********************************************
+public int length=10;
+public int breadth=10;
+public int height=10;
+
+public Cuboid()
+{
+length=length;
+breadth=breadth;
+height=height;
+}
+public Cuboid(int length,int breadth,int height)
+{
+this.length=length;
+this.breadth=breadth;
+this.height=height;
+}
+public int getVolume()
+{
+return  length*breadth*height;
+}
+**********************************************
+14
+public static void main(String []args)
+{
+Cuboid c=new Cuboid();
+Cuboid c1=new Cuboid(10,10,10);
+
+public int carID=1;
+public String carName="Alto";
+public String carType="hatchback";
+public double carPrice=45000.00;
+
+public CarDetails(int carid,String carname,String cartype,double carprice)
+{
+	carid=this.carID;
+	carname=this.carName;
+	cartype=this.carType;
+	carprice=this.carPrice;
+}
+}
+***********************************************
+public class ClassA {
+public static int a=100;
+public static int b=10;
+
+public static double data()
+{
+	return Math.sqrt(a-b);
+}
+public static double funcn()
+{
+	return (data());
+}
+
+}
+}
+*******************************
+class A{
+static float a=100;
+static float b=10;
+static float c=102;
+*********************************
+18
+int carID=1;
+String carName="Alto";
+final double carPrice=500000;
+public String displayCarDetails()
+{
+	return (carName+Double.toString(carPrice));
+}
+*******************************
+20. import java.lang.*;
+public class Encaps {
+private String Name;
+private int Roll;
+private int Age;
+
+
+public int getRoll() {
+	return Roll;
+}
+public void setRoll(int roll) {
+	Roll = roll;
+}
+public int getAge() {
+	return Age;
+}
+public void setAge(int age) {
+	Age = age;
+}
+public String getName() {
+	return Name;
+}
+public void setName(String Name) {
+	this.Name = Name;
+}
+	}
+
+ class Mainmethod 
+{
+	 public Mainmethod() {
+		// TODO Auto-generated constructor stub
+	
+	Encaps e=new Encaps();
+	e.setRoll(10);
+	e.setName("kavi");
+	e.setAge(18);
+	e.getAge();
+	e.getName();
+	e.getRoll();
+}
+}

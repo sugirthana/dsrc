@@ -1,0 +1,329 @@
+1..APP.MODULE.TS
+********************
+import {FormsModule} from '@angular/forms'
+HTML
+***********
+ <div>  
+  Select Product :  
+  <select  [(ngModel)]="ProductHeader.name" (ngModelChange)="SearchProduct(ProductHeader.name)">  
+       <option *ngFor="let prod of ProductHeader">{{prod.name}} </option>  
+   </select>  
+<div *ngIf="ProductHeader.name">  
+<h5>You have selected: {{ProductHeader.name}} Product </h5>  
+</div>  
+</div>  
+<div>  
+<h4>Product Details:</h4>  
+<table class="TFtable">  
+<tr >   
+<th>Name</th> <th>Store</th>  <th>Price</th> <th>Model</th>  
+</tr>  
+<tr  *ngFor="let Prod of ProductDetails">  
+<td>{{Prod.title}}</td>  
+<td>{{Prod.store}}</td>  
+<td>{{Prod.price}}</td>  
+<td>{{Prod.model}}</td>  
+</tr>  
+
+</table>  
+</div>  
+.TS
+***
+@Component({
+  selector: 'app-root',
+  styleUrls:['./app.component.styl'],
+ templateUrl:'./app.component.html'
+})
+export class AppComponent {
+  title = 'Welcome to dropdown-list';
+  public ProductDetails: object = []; 
+  public ProductHeader = [{ name: 'Hp' }, { name: 'Dell'}, { name: 'Lenovo' }];  
+  public Products = [  
+    {Name:'Hp', title: 'HP ENVY Laptop - 15t touch', price: '1099', store: 'Best Buy', model: '15-BS013DX' },  
+    { Name: 'Dell', title: 'Dell Laptop', price: '700', store: 'Amazon', model: 'I7378-3000SLV-PUS' },  
+    { Name: 'Lenovo', title: 'Lenovo Touch-Screen Laptop', price: '670', store: 'Target', model: '81A40025US' },  
+    { Name: 'Hp', title: 'HP OfficeJet Pro 6978 All-in-One Printer', price: '100', store: 'Target', model: 'T0F29A#B1H' },  
+    { Name: 'Hp', title: 'HP Laptop - 17t touch ', price: '420', store: 'Target', model: '1EZ78AV_1' },  
+    { Name: 'Dell', title: 'Dell - XPS 27" Touch-Screen All-In-One', price: '670', store: 'Target', model: 'BBY-311C3FX' },  
+    { Name: 'Dell', title: 'Dell - Inspiron 21.5" Touch-Screen All-In-One', price: '469.90', store: 'Target', model: 'I3265-A067BLK-PUS' },  
+    { Name: 'Lenovo', title: 'Lenovo - 520-24AST 23.8" Touch-Screen All-In-One', price: '679.99', store: 'Target', model: 'F0D3000EUS' },  
+    { Name: 'Dell', title: 'Dell - XPS 2-in-1 13.3" Touch-Screen Laptop', price: '1199.99', store: 'Target', model: 'XPS9365-7086SLV-PUS' }  
+    ];  
+ constructor(){this.getproducts(); }
+ getproducts() {
+  console.log("getProducts");
+   return this.ProductHeader;
+ }
+ SearchProduct(name: string) {  
+  
+  let obj = this.Products.filter(m => m.Name == name);  
+  this.ProductDetails = obj;  
+  return this.ProductDetails;  
+}  
+__________________________________________________________________________________________________________________________
+3.IN DESKTOP->CBS
+______________________________________________________________________________________________________________________________
+5.
+CREATE A NEW COMPONENT - newcomponent
+NEWCOMPONENT.COMPONENT.HTML
+***********************************
+iv class = "divdetails">
+  <div style = "text-align:right">
+     <h1>
+     {{title}}
+     </h1>
+     <img width = "300" src = "assets/icon.png">
+  </div>
+  <div style = "text-align:left">
+  <h2>Here are some links to help you start: </h2>
+  <ul>
+     <li>
+        <h2>
+           <a target = "_blank" href="https://angular.io/tutorial">Tour of Heroes</a>
+        </h2>
+     </li>
+     <li>
+        <h2>
+           <a target = "_blank" href = "https://github.com/angular/angular-cli/wiki">
+              CLI Documentation
+           </a>
+        </h2>
+     </li>
+     <li>
+        <h2>
+           <a target="_blank" href="http://angularjs.blogspot.ca/">Angular blog</a>
+        </h2>
+     </li>
+  </ul>
+</div>
+</div>
+NEWCOMPONENT.COMPONENT.TS
+*********************************
+title='Welcome to Q10'
+_____________________________________________________________________________________________________________________________
+6.
+.TS
+*****
+export class AppComponent {
+  title = 'Task1';
+  public count=0;
+countclick()
+{
+this.count++;
+}
+}
+
+.HTML
+**********
+<div style="text-align:center" >
+    <h1>
+     {{title}}!
+    </h1>
+ <br>
+Click the button :<br>
+<button id="login" (click)="countclick()">OK</button><br>
+The button has been clicked {{count}} times.
+  </div>
+_______________________________________________________________________________________________________________________________________________
+7.
+.TS
+****
+export class AppComponent {
+  title = ' Welcome to Task17';
+  public res;
+showTrue()
+{
+this.res=true;
+}
+}
+.HTML
+*********
+<div style="text-align:center" >
+    <h1>
+     {{title}}!
+    </h1>
+ <br>
+<button id="button1" (click)="showTrue()">True</button>
+<button id="button2" >False</button><br>
+  </div>
+  <div *ngIf="res==true" style="text-align:center">
+     Show this only if "show" is true
+  </div>
+_______________________________________________________________________________________________________________________________________________
+8.
+.HTML
+******
+<div style="text-align:center">
+    <h1>
+     {{title}}!
+    </h1>
+ <br>
+<input id="textbox" #textbox type="text" placeholder="Type Something">
+<button button (click)="check(textbox.value)">Submit</button><br>
+{{result}}
+</div>
+.TS
+****
+export class AppComponent {
+  title = 'Welcome to Task18';
+  public result;
+ check(value)
+ {
+   var pattern=/^[a-zA-Z]*$/;
+   if(value.match(pattern))
+   {
+     this.result="The String contains only alphabets"
+   }
+   if(!value.match(pattern))
+   {
+     this.result="The number or special character is present"
+   }
+   if(value.length==0)
+   {
+     this.result="Type Something in the textbox"
+   }
+ }
+  } 
+_________________________________________________________________________________________________
+9.
+.TS
+****
+ title = 'Welcome to Task19';
+  public result=0;
+  public res=false;
+ check(value)
+ {
+   for(var i=0;i<value.length;i++)
+   {
+     var ch=value.charAt(i);
+     if(ch=='a' || ch=='e'||ch=='i' ||ch=='o' || ch=='u')
+   {
+    this.res=true;
+     this.result++;
+   }
+    } 
+ }
+.HTML
+*********
+<div>
+    <h1>
+     {{title}}!
+    </h1>
+ <br>
+<input id="textbox" #textbox type="text" placeholder="Type Something"><br>
+<button button (click)="check(textbox.value)">Change</button><br>
+</div>
+<div *ngIf="res==true">{{result}}</div>
+______________________________________________________________________________
+10.
+.HTML
+********
+<div style="text-align:center">
+    <h1>
+     {{title}}!
+    </h1>
+ <br>
+Enter the String :<input id="fortextbox" #fortextbox type="text" placeholder="Type Something"><br>
+Enter the SubString :<input id="fortextbox1" #fortextbox1 type="text" placeholder="Type Something"><br>
+<button button (click)="check(fortextbox.value,fortextbox1.value)">Change</button><br>
+{{result}}
+</div>
+.TS
+****
+export class AppComponent {
+  title = 'Welcome to Task20';
+  public result;
+  check(value1,value2)
+ {
+   if(value1.match(value2))
+   {
+     this.result="true"
+   }
+   if(!value1.match(value2))
+   {
+     this.result="false"
+   }
+   if(value1.length==0 && value2.length==0)
+   {
+     this.result="Type Something in the textbox"
+   }
+ }
+________________________________________________________________________________________________________________
+11.
+.TS
+***
+export class AppComponent {
+  title = 'Welcome to Task21';
+  public result:number;
+  date(value1,value2)
+ {
+   var date1=new Date(value1)
+   var date2=new Date(value2)
+   this.result=Math.abs((date1.valueOf()-date2.valueOf())/(1000*60*60*24))
+ }
+  } 
+.HTML
+*******
+<div style="text-align:center">
+    <h1>
+     {{title}}!
+    </h1>
+ <br>
+Enter the First date :<input id="fortextbox" #fortextbox type="date" ><br>
+Enter the Second date :<input id="fortextbox1" #fortextbox1 type="date" ><br>
+<button button (click)="date(fortextbox.value,fortextbox1.value)">Change</button><br>
+{{result}}
+</div>
+_____________________________________________________________________________________________________________________
+12.
+.TS
+*****
+export class AppComponent {
+  title = 'Welcome to Task22';
+  public result;
+  
+
+  and(value1,value2)
+  { 
+    if((value1==1 || value1==0 )&&(value2==1 || value2==0) )
+    {
+      this.result= value1*value2;
+
+    }
+    else
+    {
+      this.result='enter a valid number';
+    }
+      
+  }
+  or(value1,value2)
+  {
+    if((value1==1 || value1==0 )&&(value2==1 || value2==0) )
+    {
+      this.result= (value1*1)+(value2*1);
+     if(value1==value2)
+      {
+        this.result=value1;
+      }
+    }  
+      else {
+        this.result='enter a valid number';
+      }  
+    }
+  } 
+.HTML
+******
+<div>
+    <h1>
+     {{title}}!
+    </h1>
+ <br>
+Enter number:<input id="textbox" #textbox type="text"><br>
+Enter number:<input id="textbox1" #textbox1 type="text"><br>
+<button button (click)="and(textbox.value,textbox1.value)">AND</button>
+<button button (click)="or(textbox.value,textbox1.value)">OR</button><br>
+{{result}}
+</div>
+____________________________________________________________________________________________________________________________________________________________________________________
+
+

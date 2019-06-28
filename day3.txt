@@ -1,0 +1,378 @@
+			               INHERITANCE
+			*************************
+public class Testinheritance {
+public int a=6;
+public int b=4;
+}
+ class Inherited extends Testinheritance
+{
+	public int printSum()
+	{
+		return (a+b);
+	}
+}
+************************************************
+public class Testinheritance {
+	public int a=10;
+	public int b=10;
+	}
+	 class Inherited extends Testinheritance
+	{
+		public int printSum()
+		{
+			return (a+b);
+		}
+************************************************
+public int maths(int a,int b)
+	{	
+		return a+b;
+	}
+	    
+	 public float maths(float a,float b)
+	 {
+		 return a+b;
+	 }
+*************************************************
+public double maths(int a, double b)
+	   {
+			  return a+b;
+	   }
+
+  
+	  public double maths (int a, int b)
+	   {
+		    return a-b;
+	   }
+************************************************
+public String english(String a)
+	 {
+		 return a;
+	 }
+	 public int english(int a,String b)
+	 {
+		 return a;
+	 }
+	 public double english(int a,String b,double c)
+	 {
+		 return a;
+	 }
+	 public String english(String a,int b,int c,double d)
+	 {
+		 return a;
+	 }
+************************************************
+public class Overload {
+public int add(int a,int b)
+{
+	return a;
+}
+public int add(int a,int b,String x)
+{
+	return a;
+}
+}
+*****************************************
+public class Overide {
+public void run()
+{
+}
+}
+class Inherited extends Overide{
+	public void run()
+	{
+}
+}
+*****************************************
+
+public class Animal {
+public String legs()
+{
+	return "Animal has four legs";
+}
+}
+ class Dog extends Animal
+{
+	 public String bark()
+	{
+		return "Dog is barking";
+	}
+}
+ class BabyDog extends Dog
+{
+	 public String drink()
+	{
+		return "BabyDog drinks milk";
+	}
+	public static void main(String[] args) {
+		BabyDog bd=new BabyDog();
+		System.out.println(bd.legs());
+		System.out.println(bd.bark());
+		System.out.println(bd.drink());
+	}
+***********************************************
+public class Square {
+ protected int side;
+ public Square()
+ {
+	 side=6;
+ }
+}
+ class B extends Square
+ {
+	 int perimeter,area;
+	public  B()
+	 {
+		 perimeter=4*side;
+		 area=side*side;
+	 }
+	 public static void main(String[] args) {
+		B b=new B();
+	}
+ }
+*******************************************
+public class Animal {
+	protected int numOfAnimals;
+	public Animal()
+	{
+		numOfAnimals=2;
+	}
+	void legs()
+	{
+	}
+}
+class Dog extends Animal
+{
+	protected int numOfDogs;
+	public Dog()
+	{
+		numOfDogs=4;
+	}
+	void bark()
+	{
+}
+}
+class BabyDog extends Dog
+{
+	protected int numOfBabyDogs;
+	public BabyDog()
+	{
+		numOfBabyDogs=5;
+	}
+	void drink()
+	{
+}
+}
+class MyMain extends BabyDog
+{
+	static int total;
+	public MyMain()
+	{
+			super();
+		  total=numOfBabyDogs+numOfDogs+numOfAnimals;
+	}
+	public static void main(String[] args) {
+		MyMain m=new MyMain();
+		System.out.println(MyMain.total);
+	}
+}
+*****************************************************************
+
+public class Flight {
+protected String flightName;
+protected int flightno;
+public Flight(String flightName,int flightno)
+{
+}
+}
+class Pilot extends Flight
+{
+	String name;
+	public Pilot(String name)
+	{
+		super("spicejet",101);
+}
+	public String displayDetails()
+	{
+		return name.toUpperCase()+flightName.toLowerCase();
+	}
+	public static void main(String[] args) {
+		Pilot p=new Pilot("jack");
+	}
+}
+*********************************************************
+public class Animal {
+public String eat()
+{
+	return "food";
+}
+}
+class Dog extends Animal
+{
+	public String eat()
+	{
+		return "Dog is eating.....";
+	}
+public String test()
+{
+	return "testing";
+}
+	public static void main(String[] args) {
+Animal obj=new Dog();
+Dog d=(Dog)obj;
+	}
+}
+*****************************************
+
+public class Animal {
+	public String eat()
+	{
+		return "food";
+	}
+	}
+	class Dog extends Animal
+	{
+		public String eat()
+		{
+			return "Dog is eating.....";
+		}
+	public String test()
+	{
+		return "testing";
+	}
+	public static void main(String[] args) {
+		Animal obj=(Animal)new Dog();
+obj.eat();
+	}
+}
+*********************************************
+public interface testinterface {
+default void print()
+{}
+default void show(){}
+}
+class A implements testinterface
+{
+	public static void main(String[] args) {
+		System.out.println("interface"); 
+	}
+***************************************
+19.
+abstract class Abs {
+protected String name;
+public abstract String play();
+}
+
+abstract class Abs2 extends Abs
+{
+	protected int numberOfStrings=5;
+}
+
+class Guitar extends Abs2
+{
+	public Guitar()
+	{
+		name="Guitar";
+		numberOfStrings=6;
+	}
+	public Guitar(int numberOfStrings,String name)
+	{
+		this.name="Guitar";
+		this.numberOfStrings=6;		
+	}
+	public String play()
+	{
+		return(numberOfStrings+"-and"+name);
+	}
+	}
+**********************************************************
+20
+public interface measure {
+int pounds=5;
+int ounces=9;
+int weigh=150;
+abstract int weight();
+}
+
+class Weight implements measure
+{
+	private int ounce;
+	private int pound;
+	private int total;
+	public Weight()
+	{
+		ounce=(Math.abs(ounces*ounces))%16;
+		pound=(Math.abs(pounds*pounds))+(Math.abs(ounces*ounces)/16);
+	}
+	public int totals()
+	{
+		total=pound+ounce;
+		return total;
+	}
+	public int weight()
+	{
+		if(total<weigh)
+			return total;
+		else
+			return weigh;
+	}
+***************************************************
+22
+public class Company {
+protected String companyName;
+public Company(String companyName)
+{
+}
+public String display()
+{
+	return companyName;
+}
+}
+class Person 
+{
+	protected String personName;
+	public Person(String personName)
+	{
+}
+	public String display()
+	{
+		return personName;
+	}
+******************************************
+24
+int array1[]={102,103,104,105};
+				int n=array1.length;
+				int n1=array2.length;
+				if(n!=n1)
+							return false;
+				else
+				{
+					for(int i=0;i<n;i++)
+					{
+						if(array1[i]!=array2[i])
+							return false;     
+					}
+				}
+				return true;
+***********************************************
+25
+public static boolean panNumberValidation(String pan) {
+boolean b=false;
+	if(pan.equals(pan.toUpperCase()))
+	{
+		if(pan.length()==8)
+		{
+		if(pan.substring(0, 3).matches("^[a-zA-Z]*$"))
+		{
+			if(pan.substring(3, 7).matches("^[0-9]"))
+			{
+				if(pan.substring(pan.length()-1).matches("^[a-zA-Z]*$"))
+				{
+					return true;
+				}
+			}
+		}
+	}
+	}
+	return b;
+}
+}

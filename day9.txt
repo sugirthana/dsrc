@@ -1,0 +1,439 @@
+1.			frame.setTitle(title);
+			frame.setSize(500, 600); 
+			frame.setLayout(null); 
+			frame.setVisible(true);
+***************************************************************************************
+2.	frame=new JFrame(title);
+	int w=(int) width;
+	int h=(int)height;
+	frame.setSize(width,height); 
+**********************************************************************************
+3.
+				frame=new JFrame("Sparta");
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.setSize(500, 600); 
+				frame.setLayout(null); 
+				frame.setVisible(true);
+***************************************************************************************
+4.				frame=new JFrame("Sparta");
+				lbl=new JLabel("Enter Name");
+				frame.add(lbl);
+				frame.setBackground(Color.PINK);
+				frame.setSize(500, 600); 
+				frame.setVisible(true);
+				
+****************************************************************************************
+5.				frame=new JFrame("Sparta");
+				panel=new JPanel();
+				lbl=new JLabel("Enter Name");
+			
+				JTextField text=new JTextField(20);
+				frame.add(panel);
+				panel.add(lbl);
+				panel.add(text);
+				frame.setSize(500, 600); 
+				frame.setVisible(true);
+********************************************************************************************
+6.				frame=new JFrame("Sparta");
+				panel=new JPanel();
+				lbl=new JLabel("Enter Name");
+				JTextField text=new JTextField(20);
+				lbl1=new JLabel("Enter Password");
+				pwd=new JPasswordField(10);
+				
+				frame.add(panel);
+				panel.add(lbl);
+				panel.add(text);
+				panel.add(lbl1);
+				panel.add(pwd);
+				frame.setSize(500, 600); 
+				frame.setVisible(true);
+***************************************************************************************
+7.				frame=new JFrame("Sparta");
+				panel=new JPanel();
+				lbl=new JLabel("Enter Name");
+				JTextField text=new JTextField(20);
+				lbl1=new JLabel("Enter Password");
+				pwd=new JPasswordField(20);
+				button =new JButton("Click Me");
+				frame.add(panel);
+				panel.add(lbl);
+				panel.add(text);
+				panel.add(lbl1);
+				panel.add(pwd);
+				panel.add(button);
+				frame.setSize(500, 600); 
+				frame.setVisible(true);
+**************************************************************************
+8.		String []s={"India","pakistan","Russia"};
+		frame=new JFrame("Sparta");
+		panel=new JPanel();
+		lbl=new JLabel("Enter Name");
+		JTextField text=new JTextField(20);
+		lbl1=new JLabel("Enter Password");
+		pwd=new JPasswordField(20);
+		lbl2=new JLabel("Enter City");
+		box=new JComboBox(s);
+		button =new JButton("Register");
+		frame.add(panel);
+		panel.add(lbl);
+		panel.add(text);
+		panel.add(lbl1);
+		panel.add(pwd);
+		panel.add(lbl2);
+		panel.add(box);
+		panel.add(button);
+		frame.setSize(500, 600); 
+		frame.setVisible(true);
+**************************************************************************
+9.JFrame frame;
+	JLabel lbl;
+	JPanel panel;
+	JRadioButton b1;
+	JRadioButton b2;
+	JButton button;
+				frame=new JFrame("Sparta");
+				panel=new JPanel();
+				lbl=new JLabel("Select Gender");
+				b1=new JRadioButton("Male");
+				b2=new JRadioButton("Female");
+				button =new JButton("Register");
+				frame.add(panel);
+				panel.add(lbl);	
+				panel.add(b1);
+				panel.add(b2);
+				panel.add(button);
+				frame.setSize(500, 600); 
+				frame.setVisible(true);
+***********************************************************************************
+10.				frame=new JFrame("Sparta");
+				panel=new JPanel();
+				lbl=new JLabel("Select your Hobbies");
+				b1=new JCheckBox("Reading");
+				b2=new JCheckBox("Sleeping");
+				b3=new JCheckBox("Painting");
+				b4=new JCheckBox("Travelling");
+				button =new JButton("Register");
+				frame.add(panel);
+				panel.add(lbl);	
+				panel.add(b1);
+				panel.add(b2);
+				panel.add(b3);
+				panel.add(b4);
+				panel.add(button);
+				frame.setSize(500, 600); 
+				frame.setVisible(true);
+****************************************************************************************
+11.				frame=new JFrame("Sparta");
+				panel=new JPanel();
+				lbl=new JLabel("Enter your FeedBack");
+				area=new JTextArea(5,20);
+				 area.setBounds(10,30, 200,200);  
+				button =new JButton("Submit");
+				frame.add(panel);
+				panel.add(lbl);
+				panel.add(area);
+				panel.add(button);
+				frame.setSize(500, 600); 
+				frame.setVisible(true);
+*******************************************************************************
+12.				frame=new JFrame("Sparta");
+				panel=new JPanel();
+				lbl=new JLabel("Name");
+				JTextField text=new JTextField(10);
+				lbl1=new JLabel("City");
+				JTextField text1=new JTextField(10);
+				frame.add(panel);
+				panel.add(lbl);
+				panel.add(text);
+				panel.add(lbl1);
+				panel.add(text1);
+				panel.setLayout(new GridLayout(2,2)); 
+				frame.setSize(150, 150); 
+				frame.setVisible(true);
+***********************************************************************************************************
+13.				frame=new JFrame("Sparta");
+				panel=new JPanel();
+				lbl=new JLabel("Enter Name");
+				JTextField text=new JTextField(20);
+				lbl1=new JLabel("Enter Password");
+				pwd=new JPasswordField(20);
+				lbl2=new JLabel("");
+				button =new JButton("Login");
+				frame.add(panel);
+				panel.add(lbl);
+				panel.add(text);
+				panel.add(lbl1);
+				panel.add(pwd);
+				panel.add(lbl2);
+				panel.add(button);
+				panel.setLayout(new GridLayout(3,2)); 
+				frame.setSize(200, 200); 
+				frame.setVisible(true);
+*******************************************************************************************
+14.JFrame frame;
+	JLabel lbl;
+	JLabel lbl1;
+	JLabel lbl2;
+	JTextField text;
+	JPanel panel;
+	JButton button;
+	JPasswordField pwd;
+	JOptionPane p;
+				frame=new JFrame("Sparta");
+				panel=new JPanel();
+				lbl=new JLabel("Enter Name");
+				text=new JTextField(20);
+				lbl1=new JLabel("Enter Password");
+				pwd=new JPasswordField(20);
+				lbl2=new JLabel("");
+				button =new JButton("Login");
+				frame.add(panel);
+				panel.add(lbl);
+				panel.add(text);
+				panel.add(lbl1);
+				panel.add(pwd);
+				panel.add(lbl2);
+				panel.add(button);
+			
+				button.addActionListener(new ActionListener() {
+					
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+				String user=text.getText();
+				String pd=new String(pwd.getPassword());
+				if(user.equals("sa") && pd.equals("pass"))
+				JOptionPane.showMessageDialog(frame, "Valid User");
+				}
+				});
+				
+				panel.setLayout(new GridLayout(3,2)); 
+				frame.setSize(200, 200); 
+				frame.setVisible(true);
+				
+			}
+******************************************************************************
+15.
+else
+		{
+			JOptionPane.showMessageDialog(frame, "Invalid User");
+		}
+*************************************************************************************************
+16.button1.addActionListener(new ActionListener(){
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
+						text.setText("");
+						pwd.setText("");
+					}
+					
+				});
+*******************************************************************************************************************************************
+17.JFrame frame;
+	JLabel lbl;
+	JLabel lbl1;
+	JLabel lbl2;
+	JLabel lbl3;
+	JPanel panel;
+	JPasswordField pwd;
+	JTextField text;
+	JComboBox box;
+	JTextArea area;
+	JButton button1;
+	JButton button2;
+				String s[]={"Chennai","Bangalore"};
+				frame=new JFrame("Sparta");
+				panel=new JPanel();
+				lbl=new JLabel("Name");
+				text=new JTextField(20);
+				lbl1=new JLabel("Password");
+				pwd=new JPasswordField(20);
+				lbl2=new JLabel("City");
+				box=new JComboBox(s);
+				lbl3=new JLabel("Address");
+				area=new JTextArea(20,20);
+				 area.setBounds(10,30, 200,200); 
+				 button1 =new JButton("Reset");
+				 button2 =new JButton("Save");
+				 frame.add(panel);
+					panel.add(lbl);
+					panel.add(text);
+					panel.add(lbl1);
+					panel.add(pwd);
+					panel.add(lbl2);
+					panel.add(box);
+					panel.add(lbl3);
+					panel.add(area);
+					panel.add(button1);
+					panel.add(button2);
+					panel.setLayout(new GridLayout(5,2)); 
+					frame.setSize(200, 200); 
+					frame.setVisible(true);
+***********************************************************************************************************************************************************************
+18.JFrame frame;
+	JLabel lbl;
+	JLabel lbl1;
+	JLabel lbl2;
+	JLabel lbl3;
+	JPanel panel;
+	JPasswordField pwd;
+	JTextField text;
+	JComboBox box;
+	JTextArea area;
+	JButton button1;
+	JButton button2;
+String s[]={"Chennai","Bangalore"};
+				frame=new JFrame("Sparta");
+				panel=new JPanel();
+				lbl=new JLabel("Name");
+				text=new JTextField(20);
+				lbl1=new JLabel("Password");
+				pwd=new JPasswordField(20);
+				lbl2=new JLabel("City");
+				box=new JComboBox(s);
+				lbl3=new JLabel("Address");
+				area=new JTextArea(20,20);
+				 area.setBounds(10,30, 200,200); 
+				 button1 =new JButton("Reset");
+				 button2 =new JButton("Save");
+				 frame.add(panel);
+					panel.add(lbl);
+					panel.add(text);
+					panel.add(lbl1);
+					panel.add(pwd);
+					panel.add(lbl2);
+					panel.add(box);
+					panel.add(lbl3);
+					panel.add(area);
+					panel.add(button1);
+					panel.add(button2);
+					button2.addActionListener(new ActionListener(){
+
+						@Override
+						public void actionPerformed(ActionEvent arg0) {
+							if(text.getText().isEmpty()==false)
+							{
+								if(new String(pwd.getPassword()).isEmpty()==false)
+								{
+									if(area.getText().isEmpty()==false)
+									{
+										JOptionPane.showMessageDialog(frame, "Data Saved!");
+									}
+								}
+							}
+							
+						}
+						
+					});
+					
+					button1.addActionListener(new ActionListener(){
+
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							// TODO Auto-generated method stub
+							text.setText("");
+							pwd.setText("");
+							area.setText("");
+						}
+						
+					});
+					panel.setLayout(new GridLayout(5,2)); 
+					frame.setSize(200, 200); 
+					frame.setVisible(true);
+*************************************************************************************************************************************************************************
+19.JFrame frame;
+JLabel lbl;
+JLabel lbl1;
+JLabel lbl2;
+JLabel lbl3;
+JTextField text;
+JTextField text1;
+JComboBox box;
+JCheckBox check1;
+JCheckBox check2;
+JButton but;
+JPanel panel;
+JLabel lab;
+JLabel lab1;
+JLabel lab2;
+String str="";
+String str1;
+String str2;
+
+String s[]={"FaceBook","YouTube","WhatsUp","LinkedIn","Twitter"};
+				frame=new JFrame("Sparta");
+				panel=new JPanel();
+				lbl=new JLabel("App Name");
+				text=new JTextField(20);
+				lbl1=new JLabel("Search");
+				text1=new JTextField(20);
+				lbl2=new JLabel("AppList");
+				box=new JComboBox(s);
+				check1=new JCheckBox("Above18");
+				check2=new JCheckBox("Below18");
+				lbl3=new JLabel("");
+				but=new JButton("Submit");
+				JLabel lab=new JLabel();
+				JLabel lab1=new JLabel();
+				JLabel lab2=new JLabel();
+					
+					
+					frame.add(panel);
+					panel.add(lbl);
+					panel.add(text);
+					panel.add(lbl1);
+					panel.add(text1);
+					panel.add(lbl2);
+					panel.add(box);
+					panel.add(check1);
+					check1.addActionListener(new ActionListener(){
+						
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							
+							 lab1.setText("Checkbox:Above18checked");
+							 //panel.add(lab1);
+						}
+						
+					});
+					
+					
+					panel.add(check2);
+					check2.addActionListener(new ActionListener(){
+						
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							lab2.setText("Checkbox:Below18checked");
+							//panel.add(lab2);
+						}
+						
+					});
+					
+					
+					panel.add(lbl3);
+					panel.add(but);
+					but.addActionListener(new ActionListener(){
+
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							 str=text.getText()+text1.getText()+box.getSelectedItem();
+							lab.setText(str);
+							//panel.add(lab);
+						}
+						
+					});
+					
+					
+					panel.add(lab);
+					panel.add(lab1);
+					panel.add(lab2);
+					panel.setLayout(new GridLayout(7,2));
+					frame.setSize(200, 200); 
+					frame.setVisible(true);
+				  
+						
+		}
+***********************************************************************************************************************************************************************
+20.

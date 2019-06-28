@@ -1,0 +1,81 @@
+
+public class Composition {
+private int day;
+private int month;
+private int year;
+
+public Composition()
+{
+	day=5;
+	month=12;
+	year=1998;
+}
+public String format()
+{
+	return (day+"/"+month+"/"+year);
+}
+}
+class Employee
+{
+	private int id;
+	private String name;
+	private int hireDate;
+	Employee()
+	{
+		id=101;
+		name="jack";
+		hireDate=9;
+	}
+	public String display()
+	{
+}
+}
+*********************************************
+public class Composition {
+	private int day;
+	private int month;
+	private int year;
+
+	public Composition(int day,int month,int year)
+	{
+		this.day=day;
+		this.month=month;
+		this.year=year;
+	}
+	public String format()
+	{
+		return (day+"/"+month+"/"+year);
+	}
+	}
+	class Employe 
+	{
+		private int id;
+		private String name;
+		private int hireDate;
+		
+		public int getId() {
+			return id;
+		}
+		public void setId(int id) {
+			this.id = id;
+		}
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public int getHireDate() {
+			return hireDate;
+		}
+		public void setHireDate(int hireDate) {
+			this.hireDate = hireDate;
+		}
+		private Composition c;
+		public Employe()
+		{
+			this.c=new Composition(05,12,1998);
+		}
+		public String display()
+		{
+			return name;

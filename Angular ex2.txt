@@ -1,0 +1,464 @@
+1.&2.
+.TS
+*****
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls:['./app.component.styl']
+})
+export class AppComponent {
+  title = 'Calculator';
+  result: number;
+  
+ multiply(value1 ,value2)
+ {
+  this.result=value1 * value2;
+ }
+
+ divide(value1 ,value2)
+ {
+  this.result=value1 / value2;
+ }
+ add(value1,value2)
+ {
+  this.result=(value1*1)+(value2*1);
+ }
+ sub(value1 ,value2)
+ {
+  this.result=value1 - value2;
+ }
+}
+.HTML
+*********
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+    <h1>
+     {{title}}
+    </h1>
+ <br>
+ <div style="width:100%;"><br>
+  <input id="textbox1" type="number" #textbox1><br><br>
+  <input id="textbox2"   type="number" #textbox2><br><br>
+  <button bt value="multi" id="button" (click)="multiply(textbox1.value ,textbox2.value)">Multiply</button>
+  <button bt value="multi" id="button" (click)="divide(textbox1.value ,textbox2.value)">Divide</button>
+  <button bt value="multi" id="button" (click)="add(textbox1.value ,textbox2.value)">Add</button>
+  <button bt value="multi" id="button" (click)="sub(textbox1.value ,textbox2.value)">Subtract</button>
+</div><br><br>
+<div  id="result">
+    {{result}}
+  </div>
+_________________________________________________________________________________________________
+4.
+APP.COMPONENT.HTML
+**************************
+<div style="text-align:center">
+    <h1>
+     {{title}}
+    </h1>
+ <br>
+ <div style="width:100%;"><br>
+  <input id="textbox1" type="number" #textbox1><br><br>
+  <button bt value="multi" id="button" (click)="milli(textbox1.value)">Milli</button>
+  <button bt value="multi" id="button" (click)="centi(textbox1.value )">Centi</button>
+  <button bt value="multi" id="button" (click)="deci(textbox1.value)">Deci</button>
+  <button bt value="multi" id="button" (click)="deca(textbox1.value)">Deca</button>
+  <button bt value="multi" id="button" (click)="hecto(textbox1.value)">Hecto</button>
+  <button bt value="multi" id="button" (click)="kilo(textbox1.value)">Kilo</button>
+</div><br><br>
+<div  id="result">
+    {{result}}
+  </div>
+APP.COMPONENT.TS
+***********************
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls:['./app.component.styl']
+})
+export class AppComponent {
+  title = 'Conversion from meter to any';
+  result: number;
+  
+milli(value)
+{
+  this.result=value/1000;
+}
+centi(value)
+{
+  this.result=value/100;
+}
+deci(value)
+{
+  this.result=value/10;
+}
+deca(value)
+{
+  this.result=value*10;
+}
+hecto(value)
+{
+  this.result=value*100;
+}
+kilo(value)
+{
+  this.result=value*1000;
+}
+}
+________________________________________________________________________________________
+5.
+APP.COMPONENT.HTML
+*************************
+<div style="text-align:center">
+    <h1>
+     {{title}}!
+    </h1>
+ <br>
+ <h2>UserDetails</h2>
+</div>
+
+  <table align="center">
+    <thead>
+      <th>Id</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>Email</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let UserDetails of details">
+            
+              <td>{{UserDetails.id}}</td>
+              <td>{{UserDetails.FirstName}}</td>
+                <td>{{UserDetails.LastName}}</td>
+                  <td>{{UserDetails.Email}}</td>
+    </tr></tbody></table>  
+APP.COMPONENT.TS
+**********************
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls:['./app.component.styl']
+})
+export class AppComponent {
+  title = 'Welcome to Task3';
+public details=[{id :'1',FirstName:'ROSHINI',LastName:'Sundar',Email:'roshini@gmail.com'},
+{id :'2',FirstName:'GUNA',LastName:'vignesh',Email:'guna@gmail.com'},
+{id :'3',FirstName:'HEMA',LastName:'selvaraj',Email:'hema@gmail.com'},
+{id :'4',FirstName:'SAFANA',LastName:'abdul',Email:'safana@gmail.com'},
+{id :'5',FirstName:'RAJI',LastName:'jayakumar',Email:'raji@gmail.com'}];
+}
+__________________________________________________________________________________________________
+3.APP.COMPONENT.HTML
+***************************
+<div style="text-align:center">
+    <h1>
+     {{title}}
+    </h1>
+ <br>
+
+<h3>Select your fav Country :</h3>
+
+<select (change)="countryname($event)">
+<option></option>
+<option>India</option>
+<option>USA</option>
+</select>
+<div *ngIf="res==true">
+  
+  <h4>List of Cities :</h4>
+<select (change)="cityname($event)">
+ <option></option>
+  <option>Delhi</option>
+  <option>Washington</option>
+</select></div>
+  <div *ngIf="res1==true">
+      <h3> Your fav country :{{country}}<br>
+    Your fav city :{{city}}
+  </h3></div>
+  </div>
+
+APP.COMPONENT.TS
+**********************
+export class AppComponent {
+  title = 'Select your fav Country & City';
+public res;
+public res1;
+public country:String;
+public city:String;
+
+countryname(event:any)
+{
+  this.res=true;
+  this.country=event.target.value;
+}
+cityname(event:any)
+{
+  this.res1=true;
+  this.city=event.target.value;
+}
+}
+_________________________________________________________________________________
+6.
+APP.COMPONENT.HTML
+***********************
+<div style="text-align:center">
+    <h1>
+     {{title}}!
+    </h1>
+ <br>
+<table border=1 width=500 >
+<p>Type Something in the textbox</p><br>
+<input id="txt" #txt type="text" >
+<button bt (click)="convert(txt.value)">change</button>
+
+<h3>
+  Uppercase pipe</h3> <br><h4>{{res|uppercase}}</h4>
+<br>
+<h3 >
+    Lowercase Pipe </h3><br><h4>{{res|lowercase}}</h4>
+ </table>
+ </div>
+APP.COMPONENT.TS
+**********************
+export class AppComponent {
+  title = 'Welcome to Task5';
+  public res:String;
+ 
+convert(value)
+{
+this.res=value;
+}
+}
+____________________________________________________________________________________________________________________________________
+7.
+APP.COMPONENT.HTML
+**********************
+<div style="text-align:center" >
+    <h3>
+     {{title}}!
+    </h3>
+ <br>
+<table border=1 width=400 >
+<h4>Date pipe</h4>
+{{today|date:'MM/dd/yyyy'}}<br>
+{{today|date:'shortTime'}}
+  </table>
+ </div>
+APP.COMPONENT.TS
+*********************
+export class AppComponent {
+  title = 'Welcome to Task6';
+  public today=new Date();
+}
+______________________________________________________________________________________________
+8.
+APP.COMPONENT.TS
+*********************
+export class AppComponent {
+  title = 'Welcome to Task8';
+  public res:String;
+  public b;
+ add(val)
+ {
+   this.b=true;
+   this.res=val;
+ }
+}
+APP.COMPONENT.HTML
+**********************
+<div style="text-align:center" >
+    <h1>
+     {{title}}!
+    </h1>
+ <br>
+<h1 style=color:#3399ff>Todo App</h1><br>
+<input type="text" id="txt" #txt placeholder="Add Todo" >
+<button bt (click)="add(txt.value)">Add</button><br>
+</div>
+ <div  *ngIf="b==true" style="text-align:center" >
+    <li>{{res}}</li>
+  </div>
+.STYL
+*******
+h1
+{
+  font-family: 'Open Sans' ;
+}
+_________________________________________________________________________________________________________________________
+9.
+APP.COMPONENT.TS
+*********************
+export class AppComponent 
+{
+  title = 'Welcome to Task9';
+  public v1:number;
+  public v2:number;
+  public res=false;
+  public res1;
+check(value1,value2)
+ {
+  this.v1=value1;
+  this.v2=value2;
+  if(this.v1>this.v2)
+  {
+    this.res=true;
+    this.res1=true;
+  }
+  else
+  {
+    this.res=true;
+    this.res1=false;
+  }
+ }
+}
+APP.COMPONENT.HTML
+***********************
+<div style="text-align:center" >
+    <h1>
+     {{title}}!
+    </h1>
+ <br>
+<h2>Check Greatest</h2><br>
+From<input type="number" id="txt" #txt1 ><br>
+To<input type="number" id="txt" #txt2 ><br>
+<button bt (click)="check(txt1.value,txt2.value)">submit</button><br>
+</div>
+<div  *ngIf="res==false">
+    Enter Some of the Values and Press Enter
+  </div>
+ <div  *ngIf="res1==true">
+    From value is Greater
+  </div>
+  <div  *ngIf="res1==false">
+      To value is Greater
+    </div>
+______________________________________________________________________________________
+10.
+APP.COMPONENT.HTML
+**************************
+<div style="text-align:center" >
+    <h1>
+     {{title}}!
+    </h1>
+ <br>
+<h1>Todo App</h1><br>
+<input type="text" id="txt" #txt placeholder="Add Todo" >
+<button bt (click)="getval(txt.value)">Add</button><br>
+
+<li *ngFor="let i of res |slice :1:5">{{i}}</li>
+<h1>Slice Pipe</h1><br>
+
+ <div  *ngIf="b==true" style="text-align:center" >
+    <ul *ngFor="let i of res |slice :2:5">{{i}}</ul>
+  </div>
+APP.COMPONENT.TS
+*******************
+export class AppComponent {
+  title = 'Welcome to Task10';
+  public res=[];
+  public b;
+ getval(val)
+ {
+   this.b=true;
+   this.res.push(val);
+ }
+}
+____________________________________________________________________________________________________________
+11.
+APP.COMPONENT.HTML
+**********************
+<div style="text-align:center" >
+    <h1>
+     {{title}}!
+    </h1>
+ <br>
+
+
+Weight in kg : <input type="number" id="txt" #txt1 ><br><br>
+Height in cm :<input type="number" id="txt" #txt2 ><br><br>
+<button bt (click)="calculate(txt1.value,txt2.value)">Calculate</button><br>
+</div><br>
+<div  *ngIf="res==false" style="text-align:center">
+The BMI for the given height and weight is 0
+  </div>
+  <div  *ngIf="res1==true" style="text-align:center"> 
+      The BMI for the given height and weight is {{result}}
+    </div>
+
+APP.COMPONENT.TS
+*******************
+export class AppComponent 
+{
+  title = 'Welcome to BMI';
+  public v1:number;
+  public result;
+  public res1;
+  public res=false;;
+
+calculate(value1,value2)
+ {
+   this.res=true;
+   this.res1=true;
+   this.v1=(value2*value2)/10000;
+   this.result=value1/this.v1;
+ }
+}
+_________________________________________________________________________________________
+
+12.
+APP.COMPONENT.TS
+*******************
+export class AppComponent 
+{
+  title = 'Welcome to BMI';
+  public v1:number;
+  public result='';
+  public res1;
+  public res=false;
+
+calculate(value1,value2)
+ {
+   this.res=true;
+   this.v1=(value2*value2)/10000;
+   this.res1=value1/this.v1;
+   if(this.res1<24)
+   {
+     this.result='Normal';
+   }
+   else if(this.res1>=25 && this.res1<=29)
+   {
+     this.result='Overweight';
+   }
+   else if(this.res1>=30 && this.res1<=34)
+   {
+     this.result='Obesity with low risk';
+   }
+   else if(this.res1>=35 && this.res1<=39)
+   {
+     this.result='Obesity with moderate risk';
+   }
+   else if(this.res1>=40)
+   {
+     this.result='High Obesity';
+   }
+ }
+}
+APP.COMPONENT.HTML
+**********************
+<div style="text-align:center" >
+    <h1>
+     {{title}}!
+    </h1>
+ <br>
+Weight in kg : <input type="number" id="txt" #txt1 ><br><br>
+Height in cm :<input type="number" id="txt" #txt2 ><br><br>
+<button bt (click)="calculate(txt1.value,txt2.value)">Calculate</button><br>
+</div><br>
+<div  *ngIf="res==false" style="text-align:center">
+The BMI for the given height and weight is 
+  </div>
+  <div  *ngIf="res==true" style="text-align:center">
+      The BMI for the given height and weight is {{result}}
+        </div>
+_______________________________________________________________________________________________________

@@ -1,0 +1,229 @@
+1.File directory=new File(filePath);
+			numberOfFiles=directory.list().length;
+			return numberOfFiles;
+*****************************************************************************
+3.
+File  f=new File(filePath);
+		if(f.exists())
+				{
+					return flag;
+				}
+		return false;
+********************************************************************************
+4.File f=new File(filePath);
+	if(f.canRead() && f.canWrite())
+		return true;
+	else
+		return false;
+	}
+*********************************************************************************
+5.File f=new File(filePath);
+	if(f.isDirectory() || f.isFile())
+	return flag;
+	else
+		return false;
+********************************************************************************
+6&7.File f=new File(filePath);
+		Date date=new Date(f.lastModified());
+		SimpleDateFormat sdf = new SimpleDateFormat("dd");//MM //YYYY
+		String str=sdf.format(date);
+		int res=Integer.parseInt(str);
+		return res;
+************************************************************************************
+8.File f=new File(filePath);
+long fileSize = f.length();
+if(f.exists())
+{
+return fileSize;//BYTES
+fileSize/1024;//KB
+fileSize/(1024*1024) //MB
+****************************************************************************************
+9.BufferedReader br=new BufferedReader(new FileReader(in));
+	StringBuffer b=new StringBuffer();
+	String line="";
+	while((line=br.readLine())!=null)
+		{b.append(line);
+	b.append("\n");}
+	return b;
+*********************************************************************************
+10.
+BufferedReader br=new BufferedReader(new FileReader(read));
+		StringBuffer b=new StringBuffer();
+		String line="";
+		if(read.toLowerCase().endsWith(".txt"))
+		{
+			while((line=br.readLine())!=null)
+				{
+				b.append(line);
+				b.append(System.lineSeparator());
+				}
+			return b;
+			}
+			else
+				{
+				throw new FileNotFoundException("File not Found");
+				}
+********************************************************************************************
+11.StringBuilder sb = new StringBuilder();
+    String strLine = "";
+    String str_data = "";
+    try {
+         BufferedReader br = new BufferedReader(new FileReader(input));
+         while (strLine != null)
+         {
+            if (strLine == null)
+              break;
+            str_data += strLine;
+            strLine = br.readLine();  
+        }
+       
+    }
+         catch (FileNotFoundException e) {
+             System.err.println("File not found");
+         }
+    return str_data;
+******************************************************************************************
+12.List<String> lines = Collections.emptyList();
+		try { 
+			lines = Files.readAllLines(Paths.get(input), StandardCharsets.UTF_8);
+			}
+		catch (IOException e) 
+		{ 
+			e.printStackTrace(); 
+			}
+		return lines;
+*******************************************************************************************
+13.String longest_word = "";
+	       String current;
+	       Scanner sc;
+		try {
+			sc = new Scanner(new File(input));
+			while (sc.hasNext()) 
+			{
+		          current = sc.next();
+		           if (current.length() > longest_word.length()) {
+		             longest_word = current;
+		           }
+		       }
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}   
+		return longest_word;
+******************************************************************************************
+14.String short_word = "";
+	       String current;
+	       Scanner sc;
+		try {
+			sc = new Scanner(new File(input));
+			current=sc.nextLine();
+			int c_len=current.length();
+			String s[]=current.split(" ");
+			for(String data :s)
+			{
+				if(data.length()<c_len)
+					{
+					short_word=data;
+					c_len=data.length();}
+			}
+			
+		}
+		catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		}     
+		System.out.println(short_word);
+		return short_word;	
+	
+***************************************************************************************
+15
+String line="";
+		String str[]=new String[3];
+		String st=" ";
+		try 
+		{
+			BufferedReader buf = new BufferedReader(new FileReader(input));
+			
+			for(int i=0;i<3;i++)
+				if((st=buf.readLine())!=null)
+				{
+					str[i]=st;
+			}
+			
+		} 
+		catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return str;
+*******************************************************************************************
+16FileOutputStream out=new FileOutputStream(inputFilePath);
+			String s=inputData;
+			byte[] b=s.getBytes();
+			out.write(b);
+		} 
+		catch (FileNotFoundException e) 
+		{
+			
+			e.printStackTrace();
+		} 
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+***************************************************************
+17 UNSOLVED
+String s[]=new String[6];
+		try {
+			URL ref=new URL(urlPath);
+			URI uri=new URI(urlPath);
+			s[0]=ref.toString();
+			s[1]=ref.getAuthority();
+			s[2]=ref.getHost();
+			s[3]=ref.getPath();
+			int p=ref.getPort();
+			Integer intInstance = new Integer(p);      
+			s[4]=intInstance.toString();
+			s[5]=uri.getRawPath();
+		}
+		catch (MalformedURLException e) 
+		{
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return s;
+******************************************************************************
+23
+BufferedReader reader = new BufferedReader(new FileReader(filePath));
+		int lines = 0;
+		while (reader.readLine() != null) lines++;
+		reader.close();
+		return lines;
+*********************************************************************************
+24.
+File dir=new File(filePath);
+if(dir.isDirectory())
+{
+	if(dir.list().length>0)
+		return "Its not an empty Directory";
+}
+		return dir.getName();
+**********************************************************************************
+25 UNSOLVED
+boolean bool=false;
+		File f=new File(filePath);
+		if(f.exists())
+		{
+		if(f.delete())
+			return true;
+		}
+		 return bool;
+***********************************************************

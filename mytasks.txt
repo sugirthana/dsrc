@@ -1,0 +1,77 @@
+//To read 5 names and display it
+import java.util.*;
+public class Names {
+	public static void main(String[] args) {
+			Scanner sc=new Scanner(System.in);
+			String arr[]=new String[5];
+				System.out.println("Enter 5 names");
+					for(int k=0;k<arr.length;k++)
+					{
+						arr[k]=sc.next();
+					}
+						System.out.println("Names are ");
+						for(int k=0;k<arr.length;k++)
+						{
+							System.out.print(arr[k]+"\t");
+						}}}
+*********************************************************************************************
+//Array of Objects
+class Emp
+{
+	String Name;
+	int Salary;       //INSTANCE VARIABLES
+
+	void setData(String Name,int Salary)         //local variables
+	{
+		this.Name=Name;  //this.Name refers to instance var
+		this.Salary=Salary;
+	}
+	void display()
+	{
+		System.out.println("Name is "+Name  +" Salary is "+Salary);
+	}}
+public class Employee {
+	public static void main(String[] args) {
+		Emp []e;
+		e=new Emp[3];       	    //ARRAY OF 3 ELEMENTS
+		e[0]=new Emp();         ----initializing each objects
+		e[0].setData("ashu", 100);
+		e[1]=new Emp();
+		e[1].setData("kavi", 100);
+		e[2]=new Emp();
+		e[2].setData("surya", 100);
+		for(int i=0;i<e.length;i++)
+		{
+			e[i].display();
+		}}}
+*******************************************************************************************
+//Constructor---default,paramaters
+class Customer
+{
+	String custID;
+	/*void init(){
+		custID="1001";}*/
+	Customer()     //DEFAULT CONS
+	{
+		custID="1001";
+	}
+	Customer(String custid)     //PARAMETER CONS
+	{
+		custID=custid;
+	}
+	void print()
+	{
+		System.out.println(custID);
+	}}
+public class Constructor {
+	public static void main(String[] args) {
+		/* Customer c=new Customer();
+		c.print();*/   //NULL IS PRINTED SINCE INIT() IS NOT CALLED
+
+		Customer c=new Customer();   //OBJ CREATED & DEFAULT CONS IS INVOKED
+		c.print();
+		Customer c1=new Customer("1002");  //PARAM CONS IS INVOKED
+		c1.print();
+	}}
+************************************************************************************
+//

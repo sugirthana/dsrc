@@ -1,0 +1,376 @@
+1.UNSOLVED
+List<Integer> list = new ArrayList<Integer>();
+		for(int i=1;i<a.length;i=i+2)
+		{
+			list.add(a[i]);
+		}
+		return Collections.max(list);
+________________________________________________________
+ANSWER
+int max=0;
+		for(int i=1;i<a.length;i+=2)
+		{
+			if(a[i]>0)
+				max=a[i];	
+		}
+		return max;
+***************************************************************************************
+2.if(ip1==13 && ip2==13 && ip3==13)
+			return 0;
+		else if(ip1==13 && ip2!=13 && ip3!=13)
+			return ip3;
+		else if(ip1!=13 && ip2==13 && ip3!=13)
+			return ip1;
+		else if(ip1!=13 && ip2!=13 && ip3==13)
+			return ip1+ip2;
+		else if(ip1==13 && ip2==13 && ip3!=13)
+			return ip3;
+		else if(ip1!=13 && ip2==13 && ip3==13)
+			return ip1;
+		else if(ip1==13 &&ip2!=13 && ip3==13)
+			return 0;
+		else if(ip1!=13 && ip2!=13 && ip3!=13)
+			return ip1+ip2+ip3;
+		else
+		return 0;
+*****************************************************************************************
+3.List<Integer> a=new ArrayList<Integer>(l1);
+		a.removeAll(l2);
+List<Integer> b=new ArrayList<Integer>(l2);
+		b.removeAll(l1);
+		a.addAll(b);
+int []res=new int[a.size()];
+		int i=0;
+		for(Integer e:a)
+		{
+			res[i++]=e;
+		}
+	return res;
+	}
+*******************************************************************************
+4.
+HashMap<String, String> res = new HashMap<String, String>(m1); 
+		float res1=0;
+		String a=null;
+		for(int i=0;i<s.length;i++)
+		{
+		if(res.containsKey(s[i]))
+			{
+			a=res.get(s[i]);
+		 res1+=Float.parseFloat(a);
+			}
+		}
+		return res1;
+************************************************************************
+5.HashMap<Integer, String> res = new HashMap<Integer, String>(m1); 
+		int count=0;
+		for(Integer k: res.keySet())
+		{
+			if(k%4!=0)
+				count++;
+		}
+	return count;
+******************************************************************
+6.
+int n3[]=new int[100];
+int sum=0;
+for(int i=0;i<n1.length;i++)
+{
+	for(int j=0;j<n2.length;j++)
+	{
+		if(n1[i]==n2[j])
+		{
+			n3[i]=n1[i];
+			sum+=n3[i];
+		}
+	}
+}
+	
+		return sum;
+*************************************************************************
+8.HashMap< String,Integer> res = new HashMap< String,Integer>(m1); 
+		HashMap<String,String> ans=new HashMap<String,String>();
+		set<Entry<String,Integer>> key=res.entrySet();
+		for(Entry<String,Integer> ent : key)
+		{
+			if(ent.getValue<60)
+				ans.put(ent.getKey(), "fail");
+			else
+				ans.put(ent.getKey(), "pass");
+		}
+		
+		return ans;
+**********************************************************************************
+10.int rem=0,sum=0,sq=0;
+		while(n1!=0)
+		{
+			rem=n1%10;
+			sq=rem*rem;
+			sum=sum+sq;
+			n1=n1/10;
+		}
+		return sum;
+***********************************************************
+9.
+			String s=Character.toString(ip2);
+	
+			StringTokenizer st=new StringTokenizer(ip1,s);
+			ArrayList<String> tokens = new ArrayList<String>();
+			
+			while(st.hasMoreTokens())
+			{
+				StringBuffer sb=new StringBuffer(st.nextToken().toLowerCase());
+				tokens.add(sb.reverse().toString());
+			}		
+			String[] output1=new String[tokens.size()];
+			for(int i=0;i<tokens.size();i++)
+			{
+				output1[i]=tokens.get(i);
+			}return output1;
+***************************************************************
+7.int total=0;
+		String a=null;
+		 for(int i=0;i<s1.length;i++)
+		 {
+			 String b=s1[i];
+			 StringTokenizer st=new StringTokenizer(b,"#");
+			 while(st.hasMoreTokens())
+			 {
+				 String c=st.nextToken();
+				 int h=Integer.parseInt(st.nextToken()+st.nextToken()+st.nextToken());
+				 if(h>total)
+				 {
+					 total=h;
+					
+ a=c;
+				 }
+			 }
+		 }
+
+		return a;
+************************************************************************
+17.
+char[] chars=s1.toCharArray();
+		Set<Character> charset = new LinkedHashSet<Character>();
+		for(char c: chars)
+		{
+		charset.add(c);
+		}
+		StringBuilder sb=new StringBuilder();
+		for(Character character : charset)
+		{
+		sb.append(character);
+		}
+		return sb.toString();
+************************************************************************************
+7.(alternate)
+int max=0;
+		String s4=null;
+		for(int i=0;i<s1.length;i++){
+			String s2=s1[i];	
+			StringTokenizer t=new StringTokenizer(s2,"#");
+			String s3=t.nextToken();
+			int n1=Integer.parseInt(t.nextToken());
+			int n2=Integer.parseInt(t.nextToken());
+			int n3=Integer.parseInt(t.nextToken());
+			int n=n1+n2+n3;
+		
+		if(n>=max)
+		{
+			max=n;
+			s4=s3;
+		}
+		}
+		return s4;
+*****************************************************************************************
+11.
+int sum=0,count=0;
+		Set<Integer> list=new TreeSet<>();
+		for(Integer y:a)
+		{
+			list.add(y);
+		}
+		for(Integer x:list)
+		{
+				if(x%2==0)
+				{sum=sum+x;}
+				else
+					{count++;}
+			}
+		if(count==a.length)
+		{return -1;}
+		else
+		{return sum;}
+******************************************************************************************
+13
+ List<Integer>  ls=new ArrayList<Integer>();
+	    for(int i:a)
+	    {	
+	    	if(i!=c)
+	    	{ls.add(i);}
+	    }
+	    int[] ar=new int[ls.size()];
+	    for(int x=0;x<ls.size();x++)
+	    {
+	    	ar[x]=ls.get(x);
+	    	}
+	    return ar;
+**************************************************************************
+12UNSOLVED
+for(String x:l1)
+	    	{if(x.startsWith("a")&&x.startsWith("g"))	
+	    		{l1.remove(x);}}
+		for(String y:l2)
+	    	{if(y.endsWith("n")&&y.endsWith("e"))
+	    		{l2.remove(y);}}
+		
+		l1.addAll(l2);
+		Set<String> list=new TreeSet<>();
+			for(String o:l1)
+			{
+				list.add(o);			
+				}
+			List<String> newl=new ArrayList<String>();
+			for(String z:list)
+			{
+				newl.add(z);
+			}
+		String s[]=new String[newl.size()];
+		for(int x=0;x<newl.size();x++)
+		{
+			s[x]=newl.toString();
+		}
+		return s;
+***********************************************************************************
+15.
+int sum=0,k=0;
+		for(int x=i;x<=j;x++)
+		{
+			k=0;
+			for(int y=1;y<=x;y++)
+			{
+				if(x%y==0)
+				{k++;}
+			}
+				if(k!=2)
+				{sum=sum+x;}
+		}
+				
+		return sum;
+	}
+************************************************************************************
+16.
+float sum=0;
+		float count=0;
+		Iterator <Integer> it=m1.keySet().iterator();
+		while(it.hasNext())
+		{
+			int y=it.next();
+			if(y%2==0){
+				sum=(float)sum+m1.get(y);
+				count++;
+			}
+		}
+		float d = (sum /count);
+		double val=Math.round(d*100)/100.00;
+		float f=(float)val;
+				return f;
+**********************************************************************************
+18.HashMap<String,String> hm=new HashMap<String,String> ();
+		List<String> lst1 = new ArrayList<String>();
+		List<String> lst2 = new ArrayList<String>();
+		for(String x: temp)
+			{lst1.add(x.toUpperCase().substring(0, 3));}
+		for(String y: temp)
+			{lst2.add(y);}
+		
+		for(int i=0;i<temp.length;i++)
+		{
+			hm.put(lst1.get(i), lst2.get(i));
+		}
+		return hm;
+***********************************************************************************
+19.
+int avg=0,sum=0,count=0;
+	  for(Map.Entry m :m1.entrySet())
+	  {
+		  int a=(int)m.getKey();
+		  if(a%2!=0)
+		  {
+			  int d=(int)m.getValue();
+			  sum=sum+d;
+			  count++;
+		  }
+	  }
+	  avg=sum/count;
+		return avg;
+**********************************************************************************
+20.
+ArrayList<String> l1=new ArrayList<String>();
+		for(Entry<String,String> m: m1.entrySet())
+		{
+			m.getKey();
+			m.getValue();
+			if(m.getValue().equals(s2))
+				l1.add(m.getKey());
+		}
+		String[] s=new String[l1.size()];
+		for(int i=0;i<l1.size();i++)
+		{
+			s[i]=l1.get(i);
+			System.out.println(s[i]);
+		}
+	return s;
+******************************************************************************************
+22.Set<Integer> l1=new TreeSet<Integer>();
+		Set<Integer> l2=new TreeSet<Integer>();
+		Set<Integer> temp=new TreeSet<Integer>(l1);
+		for(int x:a)
+		{l1.add(x);}
+		for(int x:b)
+		{l2.add(x);}
+		
+		if(c=='+')
+		{
+			temp.addAll(l2);
+			List<Integer> l=new ArrayList<Integer>();
+			for(int x:temp)
+			{
+				l.add(x);
+			}
+		int []union=new int[temp.size()];
+		for(int i=0;i<temp.size();i++)
+		{
+			union[i]=l.get(i);
+		}
+		return union
+           return null;
+	}
+************************************************************************************
+14.
+int count=0;
+	String s[]=new String[l1.size()];
+	for(int i=0;i<l1.size();i++){
+	s[i]=l1.get(i);
+	}
+	for(int i=0;i<s.length;i++)
+		{int len1=s[i].length();
+	int len2=s1.length();
+	if(len1!=len2)
+		count++;
+	}
+		return count;
+***********************************************************************************
+21.UNSOLVED
+int count=0;
+			 for(String x:ip)
+			 {
+				 if(x!=ip2[0]|| x!=ip2[1])
+				 {
+				 if(x.startsWith(ip2[0])||x.startsWith(ip2[1]))
+					{count++;}
+				 }
+			 }
+			 
+		return count;		
+		

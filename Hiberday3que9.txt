@@ -1,0 +1,913 @@
+MYMAIN.JAVA
+*************
+package com.dsrc.executer;
+
+import java.util.Scanner;
+
+import com.dsrc.dao.HibernateUtil;
+import com.dsrc.exceptions.ProductException;
+import com.dsrc.service.CustomerController;
+import com.dsrc.service.ProductController;
+import com.dsrc.service.StaffController;
+import com.dsrc.view.MenuScreen;
+
+public class MyMain 
+{
+		public static void main(String[] args) throws ProductException 
+		{
+			System.out.println("--PMS---");
+			Scanner sc=new Scanner(System.in);
+			System.out.println("LoginId :");
+			int id=sc.nextInt();
+			System.out.println("password :");
+			String pass=sc.next();
+			boolean check=new HibernateUtil().checkLogin(id,pass);
+			if(check)
+			{
+			System.out.println("--PMS---");
+			System.out.println("..Welcome to Product Management System..");
+			MenuScreen ms=new MenuScreen();
+			@SuppressWarnings("unused")
+			int res=ms.showMenu();
+			if(res==1)
+			{
+				new ProductController().productManage();
+			}
+			if(res==3)
+			{
+				new StaffController().productManage();
+			}
+			if(res==4)
+			{
+				new CustomerController().customerManage();
+			}
+			}
+			else
+			{
+				System.out.println("Invalid User");
+			}
+		}
+}
+_____________________________________________________________________________________________________________________________
+POJO CLASS
+***********
+PRODUCT.JAVA
+***************
+package com.dsrc.model;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="products")
+public class Product {
+@Id
+@Column(name="productid")
+	private int productid;
+@Column(name="productname")
+	private String productname;
+@Column(name="price")
+	private int price;
+	
+	public int getProductid() {
+		return productid;
+	}
+	public void setProductid(int productid) {
+		this.productid = productid;
+	}
+	public String getProductname() {
+		return productname;
+	}
+	public void setProductname(String productname) {
+		this.productname = productname;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}	}
+STAFF.JAVA
+**********
+package com.dsrc.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="staff")
+public class Staff {
+@Id
+@Column(name="staffid")
+	private int staffid;
+@Column(name="staffname")
+	private String staffname;
+@Column(name="salary")
+	private int salary;
+	
+	public int getStaffid() {
+		return staffid;
+	}
+	public void setStaffid(int staffid) {
+		this.staffid = staffid;
+	}
+	public String getStaffname() {
+		return staffname;
+	}
+	public void setStaffname(String staffname) {
+		this.staffname = staffname;
+	}
+	public int getSalary() {
+		return salary;
+	}
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}}
+CUSTOMER.JAVA
+***************
+package com.dsrc.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="customer")
+public class Customer {
+	@Id
+	@Column(name="custid")
+private int custid;
+	@Column(name="custname")
+private String custname;
+	@Column(name="email")
+private String email;
+	@Column(name="phone")
+private long phone;
+
+public int getCustid() {
+	return custid;
+}
+public void setCustid(int custid) {
+	this.custid = custid;
+}
+public String getCustname() {
+	return custname;
+}
+public void setCustname(String custname) {
+	this.custname = custname;
+}
+public String getEmail() {
+	return email;
+}
+public void setEmail(String email) {
+	this.email = email;
+}
+public long getPhone() {
+	return phone;
+}
+public void setPhone(long phone) {
+	this.phone = phone;
+}
+}
+LOGIN.JAVA
+************
+package com.dsrc.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="login")
+public class login {
+@Id
+@Column(name="loginid")
+private int loginid;
+@Column(name="password")
+private String password;
+
+public int getLoginid() {
+	return loginid;
+}
+public void setLoginid(int loginid) {
+	this.loginid = loginid;
+}
+public String getPassword() {
+	return password;
+}
+public void setPassword(String password) {
+	this.password = password;
+}
+}
+_____________________________________________________________________________________________________
+MENU SCREEN
+***************
+package com.dsrc.view;
+import java.util.Scanner;
+public class MenuScreen
+{
+	int choice;
+	public int showMenu() {
+		System.out.println("showMenu");
+		System.out.println("------------");
+		System.out.println("Select Your Option");
+		System.out.println("1. Product");
+		System.out.println("2. Sales");
+		System.out.println("3. Staff");
+		System.out.println("4. Customer");
+		System.out.println("5.Log out");
+	
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter your choice :");
+		choice=sc.nextInt();
+		return choice;}}
+PRODUCTSCREEN
+****************
+package com.dsrc.view;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
+
+import com.dsrc.dao.HibernateUtil;
+import com.dsrc.model.Product;
+import com.dsrc.service.DataValidator;
+public class ProductScreen 
+{		
+	int ch;
+		public int showProductScreen()
+		{
+			System.out.println("PRODUCT MENU");
+			System.out.println("-------------");
+			System.out.println("1. New Product");
+			System.out.println("2. Edit Product");
+			System.out.println("3. Delete Product");
+			System.out.println("4. List Product");
+			System.out.println("5. Search Product");
+			System.out.println("6. Exit.");
+			Scanner sc=new Scanner(System.in);
+			System.out.println("Enter your choice : ");
+			ch=sc.nextInt();
+			if(ch==1)
+			{
+				Scanner scan=new Scanner(System.in);
+				Product p=new Product();
+				System.out.println("Enter Product ID :");
+				p.setProductid(scan.nextInt());
+				System.out.println("Enter Product Name :");
+				p.setProductname(scan.next());
+				System.out.println("Enter ProductPrice :");	
+				p.setPrice(scan.nextInt());
+				boolean res=new DataValidator().validateProduct(p);
+				if(res)
+				{
+					System.out.println("Product Added Successfully .");
+					System.out.println("---------------------------------");
+					  new ProductScreen().showProductScreen();
+				}
+			}
+			if(ch==2)
+			{
+				Scanner scan=new Scanner(System.in);
+				Product p=new Product();
+				System.out.println("Enter Product ID :");
+				p.setProductid(scan.nextInt());
+				System.out.println("Enter Product Name :");
+				p.setProductname(scan.next());
+				System.out.println("Enter ProductPrice :");	
+				p.setPrice(scan.nextInt());
+				boolean res=new DataValidator().updateProduct(p);
+				if(res)
+				{
+					
+					System.out.println("---------------------------------");
+					  new ProductScreen().showProductScreen();
+				}
+			}
+			if(ch==3)
+			{
+				Scanner scan=new Scanner(System.in);
+				Product p=new Product();
+				System.out.println("Enter Product ID :");
+				p.setProductid(scan.nextInt());
+				boolean res=new DataValidator().deleteProduct(p);
+				if(res==true)
+				{
+					
+					System.out.println("---------------------------------");
+					  new ProductScreen().showProductScreen();
+			}	
+		}
+			if(ch==4)
+			{
+				
+				List res=new HibernateUtil().selectAllProducts();
+				System.out.println("----------------------------------------");
+				System.out.format("%-10s  %-10s  %-10s%n","ProductID","ProductName","price");
+				System.out.println("----------------------------------------");
+				for(Iterator it=res.iterator(); it.hasNext();){
+					Product prod=(Product)it.next();
+					System.out.format("%-10s  %-10s  %-10s%n",prod.getProductid(),prod.getProductname(),prod.getPrice());	
+				}
+				System.out.println("----------------------------------------");
+			}
+			if(ch==5)
+			{
+				System.out.println("Enter the Search Criteria");
+				System.out.println("1. By ProductID");
+				System.out.println("2. By Name");
+				System.out.println("3. By Price Range");
+				System.out.println("Enter choice:");
+				Scanner scan=new Scanner(System.in);
+				int choice=scan.nextInt();
+				if(choice==1)
+				{
+					System.out.println("Enter product id :");
+					int id=scan.nextInt();
+					List res=new HibernateUtil().searchByID(id);
+					System.out.println("----------------------------------------");
+					System.out.format("%-10s  %-10s  %-10s%n","ProductID","ProductName","price");
+					System.out.println("----------------------------------------");
+					for(Iterator it=res.iterator(); it.hasNext();){
+						Product prod=(Product)it.next();
+						System.out.format("%-10s  %-10s  %-10s%n",prod.getProductid(),prod.getProductname(),prod.getPrice());	
+					}
+					System.out.println("----------------------------------------");
+				}
+				if(choice==2)
+				{
+				System.out.println("Enter product name:");
+				String name=scan.next();
+				List res=new HibernateUtil().searchByname(name);
+				System.out.println("----------------------------------------");
+				System.out.format("%-10s  %-10s  %-10s%n","ProductID","ProductName","price");
+				System.out.println("----------------------------------------");
+				for(Iterator it=res.iterator(); it.hasNext();){
+					Product prod=(Product)it.next();
+					System.out.format("%-10s  %-10s  %-10s%n",prod.getProductid(),prod.getProductname(),prod.getPrice());	
+				}
+				System.out.println("----------------------------------------");
+				}
+				if(choice==3)
+				{
+					System.out.println("Enter price1 :");
+					int p1=scan.nextInt();
+					System.out.println("Enter price2 :");
+					int p2=scan.nextInt();
+					List res=new HibernateUtil().searchByrange(p1, p2);
+					System.out.println("----------------------------------------");
+					System.out.format("%-10s  %-10s  %-10s%n","ProductID","ProductName","price");
+					System.out.println("----------------------------------------");
+					for(Iterator it=res.iterator(); it.hasNext();){
+						Product prod=(Product)it.next();
+						System.out.format("%-10s  %-10s  %-10s%n",prod.getProductid(),prod.getProductname(),prod.getPrice());	
+					}
+					System.out.println("----------------------------------------");
+				}
+			}
+			return 0;}}
+STAFFSCREEN
+*************
+package com.dsrc.view;
+
+import java.util.Scanner;
+
+import com.dsrc.dao.HibernateUtil;
+import com.dsrc.model.Staff;
+import com.dsrc.service.DataValidator;
+
+public class StaffScreen 
+{
+	public int showStaffScreen()
+	{
+		System.out.println("--------------------------------");
+		System.out.println("STAFF MENU");
+		System.out.println("-------------");
+		System.out.println("1. New Staff");
+		System.out.println("2. Edit Staff");
+		System.out.println("3. Delete Staff");
+		System.out.println("4. Exit.");
+		System.out.println("Enter Your Choice : ");
+		Scanner sc=new Scanner(System.in);
+		int ch=sc.nextInt();
+		if(ch==1)
+		{
+			Staff ss=new Staff();
+			System.out.println("Enter StaffID : ");
+			ss.setStaffid(sc.nextInt());
+			System.out.println("Enter Staff Name : ");
+			ss.setStaffname(sc.next());
+			System.out.println("Enter Salary :");
+			ss.setSalary(sc.nextInt());
+			boolean res=new DataValidator().validateStaff(ss);
+			if(res)
+			{
+				System.out.println("Staff Added Successfully ....");
+				System.out.println("---------------------------------");
+				new StaffScreen().showStaffScreen();
+			}
+		}
+		if(ch==2)
+		{
+			Staff ss=new Staff();
+			System.out.println("Enter StaffID : ");
+			ss.setStaffid(sc.nextInt());
+			System.out.println("Enter Staff Name : ");
+			ss.setStaffname(sc.next());
+			System.out.println("Enter Salary :");
+			ss.setSalary(sc.nextInt());
+			boolean res=new HibernateUtil().updateStaff(ss);
+			if(res)
+			{
+				System.out.println("staff updated successfully...");
+				new StaffScreen().showStaffScreen();
+			}
+		}
+if(ch==3)
+		{
+			Staff sss=new Staff();
+			System.out.println("Enter StaffID : ");
+			sss.setStaffid(sc.nextInt());
+			boolean res1=new DataValidator().deleteStaff(sss);
+			if(res1)
+			{
+				System.out.println("staff deleted successfully...");
+				new StaffScreen().showStaffScreen();
+			}
+		}
+		return 0;
+}
+}
+CUSTOMERSCREEN
+*******************
+package com.dsrc.view;
+
+import java.util.Scanner;
+
+import com.dsrc.exceptions.ProductException;
+import com.dsrc.model.Customer;
+import com.dsrc.service.DataValidator;
+
+public class CustomerScreen 
+{
+	public int showCustomerScreen() throws ProductException
+	{
+		System.out.println("--------------------------------");
+		System.out.println("CUSTOMER MENU");
+		System.out.println("-------------");
+		System.out.println("1. New Customer");
+		System.out.println("2. Edit Customer");
+		System.out.println("3. Delete Customer");
+		System.out.println("6. Exit.");
+Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Your Choice : ");
+		int ch=sc.nextInt();
+		if(ch==1)
+		{
+			Customer cust=new Customer();
+			System.out.println("Enter CustomerID :");
+			cust.setCustid(sc.nextInt());
+			System.out.println("Enter Customer Name :"); 
+			cust.setCustname(sc.next());
+			System.out.println("Enter Email :");
+			cust.setEmail(sc.next());
+			System.out.println("Enter Mobile:");
+			cust.setPhone(sc.nextLong());
+			boolean res=new DataValidator().validateCustomer(cust);
+			if(res)
+			{
+				System.out.println("Customer Added Successfully.. .");
+				new CustomerScreen().showCustomerScreen();
+			}
+		}
+		if(ch==2)
+		{
+			Customer cust=new Customer();
+			System.out.println("Enter  CustomerID :");
+			cust.setCustid(sc.nextInt());
+			System.out.println("Enter new Customer Name :"); 
+			cust.setCustname(sc.next());
+			System.out.println("Enter new Email :");
+			cust.setEmail(sc.next());
+			System.out.println("Enter new Mobile:");
+			cust.setPhone(sc.nextLong());
+			boolean res=new DataValidator().updateCustomer(cust);
+			if(res)
+			{
+				System.out.println("Customer updated Successfully.. .");
+				new CustomerScreen().showCustomerScreen();
+			}
+		}
+		if(ch==3)
+		{
+			Customer cust=new Customer();
+			System.out.println("Enter  CustomerID :");
+			cust.setCustid(sc.nextInt());
+			boolean res=new DataValidator().deleteCustomer(cust);
+			if(res)
+			{
+				System.out.println("Customer deleted Successfully.. .");
+				new CustomerScreen().showCustomerScreen();
+			}
+		}
+		return 0;
+	}
+}
+________________________________________________________________________________________________________________________________
+CONTROLLER
+***************
+PRODUCTCONTROLLER
+**********************
+package com.dsrc.service;
+
+import com.dsrc.view.ProductScreen;
+
+public class ProductController
+{
+		public int productManage()
+		{
+			ProductScreen  ps=new ProductScreen ();
+			return ps.showProductScreen();
+		}
+}
+
+STAFFCONTROLLER
+*****************
+package com.dsrc.service;
+
+import com.dsrc.view.StaffScreen;
+
+public class StaffController 
+{
+	public int productManage()
+	{
+		StaffScreen  ps=new StaffScreen ();
+		return ps.showStaffScreen();
+	}
+}
+
+CUSTOMERCONTROLLER
+**********************
+package com.dsrc.service;
+
+import com.dsrc.exceptions.ProductException;
+import com.dsrc.view.CustomerScreen;
+
+public class CustomerController {
+	
+	public int customerManage() throws ProductException
+	{
+		return new CustomerScreen().showCustomerScreen();
+	}
+}
+
+DATA VALIDATOR
+******************
+package com.dsrc.service;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.dsrc.dao.HibernateUtil;
+import com.dsrc.exceptions.ProductException;
+import com.dsrc.model.Customer;
+import com.dsrc.model.Product;
+import com.dsrc.model.Staff;
+
+public class DataValidator 
+{
+	public boolean validateCustomer(Customer customer)throws ProductException
+	{
+		Pattern pattern;
+		Matcher matcher;
+		Matcher matcher1;
+		String email_pattern="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+				+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+		String phone_pattern="^[0-9]{10}$";
+		pattern = Pattern.compile(email_pattern);
+		matcher = pattern.matcher(customer.getEmail());
+		pattern=Pattern.compile(phone_pattern);
+		String ph=Long.toString(customer.getPhone());
+		matcher1 = pattern.matcher(ph);
+		
+		if(matcher.matches())
+		{
+		if(matcher1.matches())
+		{
+			new HibernateUtil().saveCustomer(customer);
+		}
+		else
+		{
+			throw new ProductException("Invalid phone");
+		}
+		}
+		else
+		{
+			throw new ProductException("Invalid Email");
+		}
+		return true;
+	}
+	public boolean updateCustomer(Customer customer)
+	{
+		
+		return new HibernateUtil().updateCustomer(customer);
+	}
+	public boolean deleteCustomer(Customer customer)
+	{
+		
+		return new HibernateUtil().deleteCustomer(customer);
+	}
+	public boolean validateProduct(Product product)
+	{
+		HibernateUtil h=new HibernateUtil();
+		h.saveProduct(product);
+		return true;
+	}
+	
+	public boolean validateStaff(Staff staff)
+	{
+		return new HibernateUtil().saveStaff(staff);
+	}
+	public boolean updateStaff(Staff staff)
+	{
+		return new HibernateUtil().updateStaff(staff);
+	}
+	public boolean deleteStaff(Staff staff)
+	{
+		return new HibernateUtil().deleteStaff(staff);
+	}
+	
+	public boolean updateProduct(Product product)
+	{
+		HibernateUtil h=new HibernateUtil();
+		h.updateProduct(product);
+		return true;
+	}
+	public boolean deleteProduct(Product product)
+	{
+		HibernateUtil h=new HibernateUtil();
+		h.deleteProduct(product);
+		return true;
+	}
+}
+____________________________________________________________________________________________________________________
+EXCEPTION
+***********
+package com.dsrc.exceptions;
+public class ProductException extends Exception {
+	public ProductException()
+	{
+		super();
+	}
+	public ProductException(String msg)
+	{
+		super(msg);
+	}
+}
+__________________________________________________________________________________________________________________________
+HIBERNATE.CFG.XML
+***********************
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC  
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"  
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">  
+  
+<hibernate-configuration>  
+  
+    <session-factory>  
+        <property name="hbm2ddl.auto">update</property>  
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>  
+        <property name="connection.url">jdbc:mysql://localhost:3306/PMS</property>  
+        <property name="connection.username">root</property>  
+        <property name="connection.password">dsrc</property>  
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>  
+    </session-factory>  
+  
+</hibernate-configuration>  
+________________________________________________________________________________________________________________________________
+HIBERNATEUTIL.JAVA
+********************
+package com.dsrc.dao;
+
+import java.util.Iterator;
+import java.util.List;
+
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.AnnotationConfiguration;
+
+import com.dsrc.model.Customer;
+import com.dsrc.model.Product;
+import com.dsrc.model.Staff;
+import com.dsrc.model.login;
+import com.dsrc.view.MenuScreen;
+import com.dsrc.view.StaffScreen;
+
+public class HibernateUtil 
+{
+	public boolean saveCustomer(Customer customer)
+	{
+		SessionFactory sx=new AnnotationConfiguration().configure().addAnnotatedClass(Customer.class).buildSessionFactory();
+		Session s=sx.openSession();
+		Transaction tx=s.beginTransaction();
+		s.save(customer);
+		tx.commit();
+		return true;
+	}
+	public boolean updateCustomer(Customer customer)
+	{
+		try
+		{
+		SessionFactory sx=new AnnotationConfiguration().configure().addAnnotatedClass(Customer.class).buildSessionFactory();
+		Session s=sx.openSession();
+		Transaction tx=s.beginTransaction();
+		s.update(customer);
+		tx.commit();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Invalid ID");
+			return false;
+		}
+		return true;
+	}
+	public boolean deleteCustomer(Customer customer)
+	{
+		try
+		{
+		SessionFactory sx=new AnnotationConfiguration().configure().addAnnotatedClass(Customer.class).buildSessionFactory();
+		Session s=sx.openSession();
+		Transaction tx=s.beginTransaction();
+		Customer cust=(Customer)s.get(Customer.class, customer.getCustid());
+		s.delete(cust);
+		tx.commit();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Invalid ID");
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean saveProduct(Product product)
+	{
+		SessionFactory sx=new AnnotationConfiguration().configure().addAnnotatedClass(Product.class).buildSessionFactory();
+		Session s=sx.openSession();
+		Transaction tx=s.beginTransaction();
+		s.save(product);
+		tx.commit();
+		return true;
+	}
+	// To Be Coded..	
+	public boolean saveStaff(Staff staff)
+	{
+		SessionFactory sx=new AnnotationConfiguration().configure().addAnnotatedClass(Staff.class).buildSessionFactory();
+		Session s=sx.openSession();
+		Transaction tx=s.beginTransaction();
+		s.save(staff);
+		tx.commit();
+		return true;
+	}
+	public boolean updateStaff(Staff staff)
+	{
+		try
+		{
+		SessionFactory sx=new AnnotationConfiguration().configure().addAnnotatedClass(Staff.class).buildSessionFactory();
+		Session s=sx.openSession();
+		Transaction tx=s.beginTransaction();
+		s.update(staff);
+		tx.commit();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Invalid staffID");
+			return false;
+		}
+		return true;
+	}
+	public boolean deleteStaff(Staff staff)
+	{
+		try
+		{
+		SessionFactory sx=new AnnotationConfiguration().configure().addAnnotatedClass(Staff.class).buildSessionFactory();
+		Session s=sx.openSession();
+		Transaction tx=s.beginTransaction();
+		Staff ss=(Staff)s.get(Staff.class, staff.getStaffid());
+		s.delete(ss);
+		tx.commit();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Invalid staffID");
+			new StaffScreen().showStaffScreen();
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean updateProduct(Product product)
+	{
+		try
+		{
+		SessionFactory sx=new AnnotationConfiguration().configure().addAnnotatedClass(Product.class).buildSessionFactory();
+		Session s=sx.openSession();
+		Transaction tx=s.beginTransaction();
+		s.update(product);
+		tx.commit();
+		System.out.println("Product updated Successfully .");
+		}
+		catch(Exception e)
+		{
+			System.out.println("Invalid ID");
+		}
+		return true;
+	}
+	public boolean deleteProduct(Product product)
+	{
+		try
+		{
+		SessionFactory sx=new AnnotationConfiguration().configure().addAnnotatedClass(Product.class).buildSessionFactory();
+		Session s=sx.openSession();
+		Transaction tx=s.beginTransaction();
+		Product products =(Product)s.get(Product.class, product.getProductid());
+		s.delete(products);
+		tx.commit();
+		System.out.println("Product deleted Successfully .");
+		}
+		catch(Exception e)
+		{
+			System.out.println("Invalid ID");
+			return false;
+		}
+		return true;
+	}
+	public List<Product> selectAllProducts()
+	{
+		SessionFactory sx=new AnnotationConfiguration().configure().addAnnotatedClass(Product.class).buildSessionFactory();
+		Session s=sx.openSession();
+		Transaction tx=s.beginTransaction();
+		List pro=s.createQuery("FROM Product").list();
+		return pro;		
+	}
+
+	public List<Product> searchByID(int productid)
+	{
+		SessionFactory sx=new AnnotationConfiguration().configure().addAnnotatedClass(Product.class).buildSessionFactory();
+		Session s=sx.openSession();
+		Transaction tx=s.beginTransaction();
+		Query query=s.createQuery("FROM Product where productid = :id");
+		query.setParameter("id", productid);
+		List pro = query.list();
+		return pro;
+	}
+	public List<Product> searchByname(String name)
+	{
+		SessionFactory sx=new AnnotationConfiguration().configure().addAnnotatedClass(Product.class).buildSessionFactory();
+		Session s=sx.openSession();
+		Transaction tx=s.beginTransaction();
+		Query query=s.createQuery("FROM Product where productname = :name");
+		query.setParameter("name", name);
+		List pro = query.list();
+		return pro;
+		
+	}
+
+	public List<Product> searchByrange(int fromPrice,int toPrice)
+	{
+		SessionFactory sx=new AnnotationConfiguration().configure().addAnnotatedClass(Product.class).buildSessionFactory();
+		Session s=sx.openSession();
+		Transaction tx=s.beginTransaction();
+		Query query=s.createQuery("FROM Product where price BETWEEN :val1 AND :val2");
+		query.setParameter("val1", fromPrice);
+		query.setParameter("val2", toPrice);
+		List pro = query.list();
+		return pro;
+	}
+	public boolean checkLogin(int id, String pass) 
+	{
+		SessionFactory sx=new AnnotationConfiguration().configure().addAnnotatedClass(login.class).buildSessionFactory();
+		Session s=sx.openSession();
+		Transaction tx=s.beginTransaction();
+		List pro=s.createQuery("FROM login").list();
+		for(Iterator it=pro.iterator(); it.hasNext();){
+			login prod=(login)it.next();
+			if(id==prod.getLoginid())
+			{
+				if(pass.equals(prod.getPassword()))
+				{
+					return true;	
+				}
+			}
+		
+	}
+	return false;	
+	
+}
+}
+
